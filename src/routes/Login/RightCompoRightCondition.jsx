@@ -27,6 +27,7 @@ function RightConditionRightCompo({ phnumber, verifyOtp }) {
         email: "",
         firstName: "",
         lastName: "",
+        password: "",
         userid: v4(),
         imageURL: "https://user-images.githubusercontent.com/40628582/201342233-58862907-4a5e-41a8-9245-ee99734dd4e2.png"
     })
@@ -78,6 +79,8 @@ function RightConditionRightCompo({ phnumber, verifyOtp }) {
                     <Input type={"text"} name={"firstName"} onChange={handleChange} placeholder="Enter Your First Name" ></Input>
                     <Text fontSize={"sm"}>LAST NAME</Text>
                     <Input type={"text"} name={"lastName"} onChange={handleChange} placeholder="Enter your Last Name" ></Input>
+                    <Text fontSize={"sm"}>PASSWORD</Text>
+                    <Input type={"text"} name={"password"} onChange={handleChange} placeholder="Enter your password" ></Input>
                     <Text fontSize={"sm"}>VERIFYING NUMBER</Text>
                     <Text>{`We have sent 6 digit OTP on ${phnumber}`}</Text>
                     <HStack gap={[2, 3, 5, 6]} >

@@ -33,6 +33,7 @@ function LoginRightCompo() {
 
     const [formData, setformData] = useState({
         email: "",
+        password: "",
         userid: v4(),
         imageURL:
             "https://user-images.githubusercontent.com/40628582/201342233-58862907-4a5e-41a8-9245-ee99734dd4e2.png",
@@ -60,13 +61,14 @@ function LoginRightCompo() {
         dispatch(loginAction());
     }, [formData, useemail]);
     const postUser = async () => {
-        const { email } = formData;
-        if (!email) {
+        const { email, password } = formData;
+        if (!email && !password) {
             alert("please enter all the required fields");
         }
         try {
             const res = await axios.post("http://localhost:8080/loginuser", {
                 email: email,
+                password: password
             });
             const {
                 data: { userid },
@@ -108,7 +110,7 @@ function LoginRightCompo() {
             {_id ? (
                 <Center w={"90%"} h={"60%"} >
                     <Box
-                    
+
                         height={"100%"}
                         w={"100%"}
                         rounded={"lg"}
@@ -116,7 +118,7 @@ function LoginRightCompo() {
                         textAlign={"center"}
                     >
                         <Avatar
-                            size={["sm","md","xl"]}
+                            size={["sm", "md", "xl"]}
                             src={imageURL}
                             alt={"Avatar Alt"}
                             // mb={4}
@@ -211,6 +213,12 @@ function LoginRightCompo() {
                             name={"email"}
                             onChange={handleChange}
                             placeholder="Enter your Email Id"
+                        ></Input>
+                        <Input
+                            type={"text"}
+                            name={"password"}
+                            onChange={handleChange}
+                            placeholder="Enter your password"
                         ></Input>
                         <Button
                             color={"white"}
