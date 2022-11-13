@@ -33,6 +33,7 @@ function Navbar() {
    const dispatch = useDispatch();
    const [name, setname] = useState("dsafd")
    const { data: { imageURL, firstName } } = useSelector((store) => store.auth)
+   
 
 
    useEffect(() => {

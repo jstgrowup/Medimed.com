@@ -4,7 +4,7 @@ import LoginLeftCompo from "./LoginLeftCompo";
 import LoginRightCompo from "./LoginRightCompo";
 
 function Login() {
-  
+
    return (
       <>
          <Center   p={["2", "3", "10", "14"]} bg={"#f3f6fb"}>
