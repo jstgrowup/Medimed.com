@@ -32,30 +32,10 @@ function Navbar() {
    const { isOpen, onOpen, onClose } = useDisclosure();
    const dispatch = useDispatch();
    const [name, setname] = useState("dsafd")
-   const { data: { firstName, imageURL } } = useSelector((store) => store.auth)
-   const getData = async () => {
-      const res = await axios.get("https://medimedcom-backend-production.up.railway.app/redisdata")
-      const { data: { email } } = res
-      console.log('email:', email)
-      localStorage.setItem("email", email)
-      try {
-         if (!email) {
-            const data = localStorage.getItem("email")
-            const res = await axios.post("https://medimedcom-backend-production.up.railway.app/getuser", { email: data })
-            console.log('res:', res)
-            const { firstName } = res.data[0]
-            setname(firstName)
-         }
-      } catch (e) {
-         console.log('e:', e)
-
-      }
-   }
-   useEffect(() => {
-      dispatch(loginAction())
-      // setname(firstName)
-      getData()
-   }, [])
+   const { data:{imageURL,firstName} } = useSelector((store) => store.auth)
+   
+   
+   
 
    return (
       <Flex

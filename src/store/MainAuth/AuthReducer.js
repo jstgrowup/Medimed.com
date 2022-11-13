@@ -7,7 +7,6 @@ const initState = {
 
 }
 export const AuthReducer = (state = initState, { type, payload }) => {
-    
     switch (type) {
         case LOGIN_LOADING: {
             return {
@@ -21,7 +20,7 @@ export const AuthReducer = (state = initState, { type, payload }) => {
                 ...state,
                 loading: false,
                 error: false,
-                data: payload.data ? payload.data : payload
+                data: payload
             }
         }
         case LOGIN_FAILURE: {

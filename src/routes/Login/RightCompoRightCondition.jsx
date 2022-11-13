@@ -12,16 +12,22 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from "react-redux";
+import { loginAction } from "../../store/MainAuth/AuthActions";
 
+import { v4 } from "uuid"
 
 
 function RightConditionRightCompo({ phnumber, verifyOtp }) {
     const [otp, setotp] = useState("")
-    const [response, setresponse] = useState()
+    const [useemail, setuseemail] = useState("")
+    const dispatch = useDispatch()
+    const [bool, setbool] = useState(false)
     const [formData, setformData] = useState({
         email: "",
         firstName: "",
         lastName: "",
+        userid: v4(),
         imageURL: "https://user-images.githubusercontent.com/40628582/201342233-58862907-4a5e-41a8-9245-ee99734dd4e2.png"
     })
     const handleChange = (e) => {
@@ -32,23 +38,26 @@ function RightConditionRightCompo({ phnumber, verifyOtp }) {
         const { email, firstName, lastName } = formData
         if (!email || !firstName || !lastName) {
             alert("please enter all the required fields")
-
         }
         try {
-            const res = await axios.post("https://medimedcom-backend-production.up.railway.app/postUserViaForm", formData)
-            setresponse(res)
+            const res = await axios.post("http://localhost:8080/postUserViaForm", formData)
+            const { data: { userid } } = res
+            localStorage.setItem("email", userid)
+            setuseemail(userid)
         } catch (e) {
             alert(`rightcompo condition failed: ${e.message}`)
         }
 
     }
     const handleSubmit = () => {
-        verifyOtp(otp)
+        // verifyOtp(otp)
         postUser()
-
+        setbool(!bool)
     }
     useEffect(() => {
-    }, [response])
+        dispatch(loginAction())
+    }, [useemail, bool])
+
 
 
     return (
