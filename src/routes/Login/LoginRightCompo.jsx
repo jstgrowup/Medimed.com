@@ -69,7 +69,7 @@ function LoginRightCompo() {
             alert("please enter all the required fields");
         }
         try {
-            const res = await axios.post("http://localhost:8080/loginuser", {
+            const res = await axios.post("https://testbe-production.up.railway.app/loginuser", {
                 email: email,
                 password: password
             });
@@ -107,7 +107,9 @@ function LoginRightCompo() {
             console.log(error);
         }
     };
-
+    const handleMail = () => {
+        window.location.href = "mailto:deysubham999@gmail.com";
+    }
     return (
         <Box >
             {_id ? (
@@ -144,56 +146,59 @@ function LoginRightCompo() {
                         <Text fontWeight={600} color={"gray.500"} >
                             {email}
                         </Text>
-                        <Flex gap={4} >
+                        <Stack mt={8} direction={'row'} spacing={4}>
                             <Button
+                            bg={"#32AEB0"}
+                                size="lg"
                                 flex={1}
-                                fontSize={"sm"}
-                                rounded={"full"}
-                                _focus={{
-                                    bg: "gray.200",
-                                }}
-                              
-                            >
-                              <Link to="/cart" >  My Cart Items</Link>
-                            </Button>
-                            <Button
-                                flex={1}
-                                fontSize={"md"}
-                                rounded={"full"}
-                                bg={"blue.400"}
                                 color={"white"}
+                                fontSize={'sm'}
+                                rounded={'full'}
+                                _focus={{
+                                    bg: '#32AEB0',
+                                }}>
+                                My Cart
+                            </Button>
+
+                            <Button
+                                onClick={handleMail}
+                                size="lg"
+                                flex={1}
+                                fontSize={'md'}
+                                rounded={'full'}
+                                bg={'#32AEB0'}
+                                color={'white'}
                                 boxShadow={
-                                    "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
+                                    '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
                                 }
                                 _hover={{
-                                    bg: "blue.500",
+                                    bg: '#32AEB0',
                                 }}
                                 _focus={{
-                                    bg: "blue.500",
-                                }}
-                            >
+                                    bg: '#32AEB0',
+                                }}>
                                 Contact
                             </Button>
                             <Button
+                                size="lg"
                                 flex={1}
-                                fontSize={"md"}
-                                rounded={"full"}
+                                fontSize={'md'}
+                                rounded={'full'}
                                 onClick={handleLogout}
-                                bg={"blue.400"}
-                                color={"white"}
+                                bg={'#32AEB0'}
+                                color={'white'}
                                 boxShadow={
-                                    "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
+                                    '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
                                 }
                                 _hover={{
-                                    bg: "blue.500",
+                                    bg: 'blue.500',
                                 }}
                                 _focus={{
-                                    bg: "blue.500",
-                                }}
-                            >
+                                    bg: 'blue.500',
+                                }}>
                                 Log Out
                             </Button>
-                        </Flex>
+                        </Stack>
                     </Box>
                 </Center>
             ) : !otp ? (

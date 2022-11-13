@@ -41,7 +41,7 @@ function RightConditionRightCompo({ phnumber, verifyOtp }) {
             alert("please enter all the required fields")
         }
         try {
-            const res = await axios.post("http://localhost:8080/postUserViaForm", formData)
+            const res = await axios.post("https://testbe-production.up.railway.app/postUserViaForm", formData)
             const { data: { userid } } = res
             localStorage.setItem("email", userid)
             setuseemail(userid)
