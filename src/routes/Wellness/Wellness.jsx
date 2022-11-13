@@ -53,7 +53,7 @@ function Wellness() {
             // })
             alert(" Item added Successfully!!")
           }catch(e){
-            console.log("Something went Wrong")
+            console.log(e)
             // toast({
             //   title: `Something went wrong`,
             //   status: "error",
@@ -193,8 +193,9 @@ function Wellness() {
             </Box>
             <Flex flexWrap={"wrap"} justify={"space-evenly"} width={"100%"} gap={"20px"}  marginTop={"20px"}>
                {data?.filter((el) => el.off <= "65%" ? el : null).splice(0, 4).map((el) => (
-                  <Link key={el._id} to={`/wellness/${el._id}`} >
-                     <Flex
+                  
+                     <Box
+                     key={el._id}
                         wrap={"wrap"}
                         direction={"column"}
                         minHeight={"400px"}
@@ -206,7 +207,7 @@ function Wellness() {
                         //height={340}
                         bg={"white"}
 
-                     >
+                     ><Link  to={`/wellness/${el._id}`} >
                         <Box  lineHeight={2} height={"80%"}>
                            <img
                               src={el.url}
@@ -217,11 +218,16 @@ function Wellness() {
                            </Text>
                            <Text color={"#6F7284"} fontSize={13}  >{el.mkt}</Text>
                            <Text fontWeight={"bold"} color={"#6F7284"} fontSize={14}  >Best Price* <Text as={"span"} fontWeight={"bold"} fontSize={"16px"} color={"#EF4281"}>Rs.{el.price}</Text></Text>
-                        </Box>
+                        </Box></Link>
                         <Spacer />
 
-                        <Flex justify={"center"} height={"10%"}><Button marginTop={"15px"} backgroundColor={"#24AEB1"} colorScheme={"twitter"}>ADD TO CART</Button></Flex>
-                     </Flex></Link>
+                        <Flex justify={"center"} height={"10%"}><Button marginTop={"15px"} backgroundColor={"#24AEB1"} colorScheme={"twitter"}
+                        onClick={()=>{
+                           addToCartHandler(el._id)
+                        }}
+
+                        >ADD TO CART</Button></Flex>
+                     </Box>
                ))}
             </Flex>
          </Box>
@@ -246,9 +252,9 @@ function Wellness() {
 
             <Flex flexWrap={"wrap"} justify={"space-evenly"} width={"100%"} gap={"20px"}  marginTop={"20px"}>
                {data?.filter((el) => el.price <= 200 ? el : null).splice(0, 4).map((el) => (
-                  <Link key={el._id} to={`/wellness/${el._id}`} >
-                     <Flex
-
+                  
+                     <Box
+                        key={el._id}
                         wrap={"wrap"}
                         direction={"column"}
                         minHeight={"400px"}
@@ -260,6 +266,7 @@ function Wellness() {
                         //height={340}
                         bg={"white"}
                      >
+                        <Link  to={`/wellness/${el._id}`} >
                         <Box  lineHeight={2} height={"80%"}>
                            <img
                               src={el.url}
@@ -271,11 +278,13 @@ function Wellness() {
                            <Text color={"#6F7284"} fontSize={13}  >{el.mkt}</Text>
                            <Text fontWeight={"bold"} color={"#6F7284"} fontSize={14}  >Best Price* <Text as={"span"} fontWeight={"bold"} fontSize={"16px"} color={"#EF4281"}>Rs.{el.price}</Text></Text>
                         </Box>
-
+                        </Link>
                         <Spacer />
 
-                        <Flex justify={"center"} height={"10%"}><Button marginTop={"15px"} backgroundColor={"#24AEB1"} colorScheme={"twitter"}>ADD TO CART</Button></Flex>
-                     </Flex></Link>
+                        <Flex justify={"center"} height={"10%"}><Button marginTop={"15px"} backgroundColor={"#24AEB1"} colorScheme={"twitter"}   onClick={()=>{
+                           addToCartHandler(el._id)
+                        }} >ADD TO CART</Button></Flex>
+                     </Box>
                ))}
             </Flex>
          </Box>
@@ -299,7 +308,7 @@ function Wellness() {
             </Box>
             <Flex flexWrap={"wrap"} justify={"space-evenly"} width={"100%"} gap={"20px"}  marginTop={"20px"}>
                {data?.filter((el) => el.price >= 600 ? el : null).splice(0, 4).map((el) => (
-                  <Link key={el._id} to={`/wellness/${el._id}`} >
+                  
                      <Flex
                         wrap={"wrap"}
                         direction={"column"}
@@ -312,6 +321,7 @@ function Wellness() {
                         //height={340}
                         bg={"white"}
                      >
+                        <Link key={el._id} to={`/wellness/${el._id}`} >
                         <Box  lineHeight={2} height={"80%"}>
                            <img
                               src={el.url}
@@ -323,9 +333,11 @@ function Wellness() {
                            <Text color={"#6F7284"} fontSize={13}  >{el.mkt}</Text>
                            <Text fontWeight={"bold"} color={"#6F7284"} fontSize={14}  >Best Price* <Text as={"span"} fontWeight={"bold"} fontSize={"16px"} color={"#EF4281"}>Rs.{el.price}</Text></Text>
                         </Box>
-
-                        <Flex justify={"center"} height={"10%"}><Button marginTop={"15px"} backgroundColor={"#24AEB1"} colorScheme={"twitter"}>ADD TO CART</Button></Flex>
-                     </Flex></Link>
+                        </Link>
+                        <Flex justify={"center"} height={"10%"}><Button marginTop={"15px"} backgroundColor={"#24AEB1"} colorScheme={"twitter"}   onClick={()=>{
+                           addToCartHandler(el._id)
+                        }} >ADD TO CART</Button></Flex>
+                     </Flex>
                ))}
             </Flex>
          </Box>
