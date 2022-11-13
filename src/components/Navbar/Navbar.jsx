@@ -17,7 +17,7 @@ import {
    useDisclosure,
 } from "@chakra-ui/react";
 import Medimed from "../../assets/logos/Medimed.com-navbar-removebg.png";
-import { MdShoppingCart } from "react-icons/md";
+import { MdShoppingCart, MdHealthAndSafety } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import { IoChevronDown } from "react-icons/io5";
 import { HamburgerIcon } from "@chakra-ui/icons";
@@ -25,17 +25,13 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector, } from "react-redux";
 import { loginAction } from "../../store/MainAuth/AuthActions";
 import { useEffect, useState } from "react";
-import axios from "axios";
+
 
 function Navbar() {
    const navigate = useNavigate();
    const { isOpen, onOpen, onClose } = useDisclosure();
    const dispatch = useDispatch();
-   const [name, setname] = useState("dsafd")
    const { data: { imageURL, firstName } } = useSelector((store) => store.auth)
-   
-
-
    useEffect(() => {
       dispatch(loginAction())
    }, [])
@@ -111,10 +107,20 @@ function Navbar() {
             <Button
                as={NavLink}
                to={"/login"}
-               leftIcon={imageURL ? <Image src={imageURL} borderRadius={"full"} boxSize={"7"} /> : <FaUserCircle size={22} />}
+               leftIcon={
+                  imageURL ? (
+                     <Image
+                        src={imageURL}
+                        borderRadius={"full"}
+                        boxSize={"7"}
+                     />
+                  ) : (
+                     <FaUserCircle size={22} />
+                  )
+               }
                variant={"none"}
             >
-               {!firstName ? "Sign in / Sign up" : firstName}
+               {firstName ? firstName : "Sign in / Sign up"}
             </Button>
          </HStack>
          <Button
@@ -133,10 +139,25 @@ function Navbar() {
                      src={
                         "https://raw.githubusercontent.com/iammostak/adhesive-legs-8944/2d3100a8c566459a2318b125206669e5ae3ee42b/src/assets/logos/Medimed.com-navbar.png"
                      }
+                     onClick={() => navigate("/")}
                   />
                </DrawerHeader>
                <DrawerBody>
-                  <Box w={"full"} mb={4}>
+                  <Box w={"full"} mb={3}>
+                     <Button
+                        w={"full"}
+                        size={"lg"}
+                        as={NavLink}
+                        to={"/cart"}
+                        bg={"#32AEB0"}
+                        color={"white"}
+                        letterSpacing={1}
+                        leftIcon={<MdShoppingCart size={24} />}
+                     >
+                        Cart
+                     </Button>
+                  </Box>
+                  <Box w={"full"} mb={3}>
                      <Button
                         w={"full"}
                         size={"lg"}
@@ -145,11 +166,12 @@ function Navbar() {
                         bg={"#32AEB0"}
                         color={"white"}
                         letterSpacing={1}
+                        leftIcon={<MdHealthAndSafety size={24} />}
                      >
                         Wellness
                      </Button>
                   </Box>
-                  <Box w={"full"} mb={4}>
+                  <Box>
                      <Button
                         w={"full"}
                         size={"lg"}
@@ -158,8 +180,20 @@ function Navbar() {
                         bg={"#32AEB0"}
                         color={"white"}
                         letterSpacing={1}
+                        leftIcon={
+                           imageURL ? (
+                              <Image
+                                 src={imageURL}
+                                 borderRadius={"full"}
+                                 boxSize={"7"}
+                              />
+                           ) : (
+                              <FaUserCircle size={22} />
+                           )
+                        }
+                        variant={"none"}
                      >
-                        Sign in / Sign up
+                        {firstName ? firstName : "Sign in / Sign up"}
                      </Button>
                   </Box>
                </DrawerBody>

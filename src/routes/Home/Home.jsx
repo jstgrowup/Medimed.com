@@ -14,6 +14,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import HomeCarousel from "./HomeCarousel";
 import DealCard from "./DealCard";
 import {
+   slides,
    categoryArr,
    dealArr,
    offerArr,
@@ -63,12 +64,16 @@ function Home() {
             display={{ base: "none", md: "flex" }}
          >
             {categoryArr.map((item) => (
-               <Text fontSize={{ base: 11, lg: "sm" }} cursor={"pointer"}>
+               <Text
+                  key={item.id}
+                  fontSize={{ base: 11, lg: "sm" }}
+                  cursor={"pointer"}
+               >
                   {item}
                </Text>
             ))}
          </HStack>
-         <HomeCarousel />
+         <HomeCarousel slides={slides} />
          <Flex
             py={4}
             px={{ base: 2, md: 4, lg: 7 }}

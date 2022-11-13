@@ -150,6 +150,7 @@ function LoginRightCompo() {
                             <Button
                             bg={"#32AEB0"}
                                 size="lg"
+                                onClick={()=>navigate("/cart")}
                                 flex={1}
                                 color={"white"}
                                 fontSize={'sm'}

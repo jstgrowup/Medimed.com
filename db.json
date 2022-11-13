@@ -429,5 +429,76 @@
          "img": "https://www.netmeds.com/images/category/v1/3772/thumb/home_health.jpg",
          "title": "Home & Health"
       }
+   ],
+   "medicinePopoverArr": [
+      {
+         "id": 1,
+         "title": "All Medicine",
+         "route": "/wellness"
+      },
+      {
+         "id": 2,
+         "title": "Previously Ordered Products",
+         "route": ""
+      }
+   ],
+   "beautyPopoverArr": [
+      {
+         "id": 1,
+         "title": "Personal Care",
+         "route": "/wellness"
+      },
+      {
+         "id": 2,
+         "title": "Make-Up",
+         "route": "/wellness"
+      },
+      {
+         "id": 3,
+         "title": "Hair",
+         "route": "/wellness"
+      },
+      {
+         "id": 4,
+         "title": "Skin Care",
+         "route": "/wellness"
+      },
+      {
+         "id": 5,
+         "title": "Tools & Appliances",
+         "route": ""
+      },
+      {
+         "id": 6,
+         "title": "Mom & Baby",
+         "route": "/wellness"
+      },
+      {
+         "id": 7,
+         "title": "Fragrances",
+         "route": ""
+      },
+      {
+         "id": 8,
+         "title": "Men's Grooming",
+         "route": ""
+      }
+   ],
+   "healthPopoverArr": [
+      {
+         "id": 1,
+         "title": "Health Library",
+         "route": "/wellness"
+      },
+      {
+         "id": 2,
+         "title": "PatientsAlike",
+         "route": ""
+      },
+      {
+         "id": 3,
+         "title": "Cancer Awareness",
+         "route": ""
+      }
    ]
 }

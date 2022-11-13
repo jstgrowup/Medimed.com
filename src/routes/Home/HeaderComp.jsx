@@ -1,11 +1,13 @@
 import { HStack, Image, Text } from "@chakra-ui/react";
-import medicine_logo from "../../assets/images/medicine.svg";
 import wellness_logo from "../../assets/images/wellness.svg";
 import diagnostics_logo from "../../assets/images/diagnostics.svg";
-import beauty_logo from "../../assets/images/beauty.svg";
-import health_logo from "../../assets/images/health-library.svg";
 import { NavLink } from "react-router-dom";
-import { MdArrowDropDown } from "react-icons/md";
+import {
+   medicinePopoverArr,
+   beautyPopoverArr,
+   healthPopoverArr,
+} from "../../../db.json";
+import DropDown from "./DropDown";
 
 function HeaderComp() {
    return (
@@ -17,11 +19,9 @@ function HeaderComp() {
          spacing={{ base: 4, lg: 20 }}
          display={{ base: "none", md: "flex" }}
       >
-         <HStack spacing={2} cursor={"pointer"}>
-            <Image src={medicine_logo} boxSize={{ md: 30, lg: 39 }} />
-            <Text>Medicine</Text>
-            <MdArrowDropDown size={20} style={{ marginTop: "3px" }} />
-         </HStack>
+         <DropDown data={medicinePopoverArr} imgUrl="medicine">
+            Medicine
+         </DropDown>
          <HStack spacing={2} cursor={"pointer"} as={NavLink} to={"/wellness"}>
             <Image src={wellness_logo} boxSize={{ md: 30, lg: 39 }} />
             <Text>Wellness</Text>
@@ -30,16 +30,12 @@ function HeaderComp() {
             <Image src={diagnostics_logo} boxSize={{ md: 30, lg: 39 }} />
             <Text>Lab Tests</Text>
          </HStack>
-         <HStack spacing={2} cursor={"pointer"}>
-            <Image src={beauty_logo} boxSize={{ md: 30, lg: 39 }} />
-            <Text>Beauty</Text>
-            <MdArrowDropDown size={20} style={{ marginTop: "3px" }} />
-         </HStack>
-         <HStack spacing={2} cursor={"pointer"}>
-            <Image src={health_logo} boxSize={{ md: 30, lg: 39 }} />
-            <Text>Health Corner</Text>
-            <MdArrowDropDown size={20} style={{ marginTop: "3px" }} />
-         </HStack>
+         <DropDown data={beautyPopoverArr} imgUrl="beauty">
+            Beauty
+         </DropDown>
+         <DropDown data={healthPopoverArr} imgUrl="health">
+            Health Corner
+         </DropDown>
       </HStack>
    );
 }

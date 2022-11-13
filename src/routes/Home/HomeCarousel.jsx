@@ -1,9 +1,8 @@
 import { Box, Flex, HStack, Icon, Image, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { slides } from "../../../db.json";
 
-function HomeCarousel() {
+function HomeCarousel({ slides }) {
    const [currentSlide, setCurrentSlide] = useState(0);
    const slidesCount = slides.length;
    const carouselStyle = {
