@@ -32,10 +32,14 @@ function Navbar() {
    const { isOpen, onOpen, onClose } = useDisclosure();
    const dispatch = useDispatch();
    const [name, setname] = useState("dsafd")
-   const { data:{imageURL,firstName} } = useSelector((store) => store.auth)
-   
-   
-   
+   const { data: { imageURL, firstName } } = useSelector((store) => store.auth)
+
+
+   useEffect(() => {
+      dispatch(loginAction())
+   }, [])
+
+
 
    return (
       <Flex
