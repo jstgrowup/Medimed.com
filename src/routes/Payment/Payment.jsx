@@ -9,16 +9,17 @@ import {
     useDisclosure,
     Flex,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
 
 const Payment = () => {
-    const {discount,  price, total} = useSelector((store) => store.paymentState)
+    const {discount,  price, total} = useSelector((store) => store.paymentState.payload)
+    const prop = useSelector((store) => store.paymentState)
 
-        
+       
        
         
         
@@ -28,19 +29,15 @@ const Payment = () => {
 
      let PaymentData = JSON.parse(localStorage.getItem("Price")) || "";
      let DiscountPrice = JSON.parse(localStorage.getItem("DiscountPrice")) || "";
-    // const { shippingInfo, cartItems } = useSelector((state) => state.cart);
-    // const { user } = useSelector((state) => state.user);
-    // const { error } = useSelector((state) => state.newOrder);
-    // // const dispatch = useDispatch();
-    // const alert = useAlert();
-    // const stripe = useStripe();
-    // const elements = useElements();
-    // const payBtn = useRef(null);
+     const navigate = useNavigate();
+    useEffect(()=>{
 
-     //console.log(payment);
-    // console.log(DiscountPrice);
+console.log(price)
 
-    const navigate = useNavigate();
+
+    },[discount,  price, total])
+
+
 
     const handleSuccess = () => {
         // BasicUsage() ;
