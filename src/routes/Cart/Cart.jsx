@@ -17,7 +17,7 @@ const mainColor = "rgb(50,174,177)";
 const getCartData = async (id) => {
   // https://medimedcom-backend-production.up.railway.app/products
   let data = await axios.get(
-    "https://medimedcom-backend-production.up.railway.app/carts",
+    "https://testbe-production.up.railway.app/carts",
     {
       headers: { userid: id },
     }
@@ -64,7 +64,7 @@ function Cart() {
     try {
       // let d=await axios.post("https://medimedcom-backend-production.up.railway.app/carts/update",{
       let d = await axios.post(
-        "https://medimedcom-backend-production.up.railway.app/carts/update",
+        "https://testbe-production.up.railway.app/carts/update",
         {
           type: type,
           productId: id._id,
@@ -93,7 +93,7 @@ function Cart() {
     setCartState({ ...cartState, loading: true, error: false, success: false });
     try {
       await axios.post(
-        "https://medimedcom-backend-production.up.railway.app/carts/remove",
+        "https://testbe-production.up.railway.app/carts/remove",
         {
           productId: id,
         }
