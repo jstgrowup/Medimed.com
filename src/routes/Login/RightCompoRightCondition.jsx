@@ -50,7 +50,7 @@ function RightConditionRightCompo({ phnumber, verifyOtp }) {
 
     }
     const handleSubmit = () => {
-        // verifyOtp(otp)
+        verifyOtp(otp)
         postUser()
         setbool(!bool)
     }
