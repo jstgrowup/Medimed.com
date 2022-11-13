@@ -26,7 +26,7 @@ function LoginRightCompo() {
     const [bool, setbool] = useState(true);
     const [loading, setloading] = useState(false);
     const [useemail, setuseemail] = useState("");
-
+    const [otp, setotp] = useState(false)
     const {
         data: { _id, imageURL, firstName, email },
     } = useSelector((store) => store.auth);
@@ -47,8 +47,9 @@ function LoginRightCompo() {
         try {
             const res = await setupRecaptcha(phnumber);
             setresult(res);
-            setphnumber("");
-            setbool(!bool)
+            // setphnumber("");
+            setotp(true)
+            // setbool(!bool)
         } catch (error) {
             alert(error.message);
         }
@@ -70,12 +71,12 @@ function LoginRightCompo() {
                 email: email,
                 password: password
             });
-            const {
-                data: { userid },
-            } = res;
+            const { data: { userid } } = res;
+            console.log('res:', res)
             localStorage.setItem("email", userid);
             setuseemail(userid);
         } catch (e) {
+            console.log(e);
             alert(`user not found please enter valid email`);
         }
     };
@@ -192,7 +193,7 @@ function LoginRightCompo() {
                         </Flex>
                     </Box>
                 </Center>
-            ) : !bool ? (
+            ) : !otp ? (
                 <Box w={["300", "420px", "490px", "520px"]}>
                     <Flex
                         direction={"column"}
