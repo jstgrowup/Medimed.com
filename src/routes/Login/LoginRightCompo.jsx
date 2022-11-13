@@ -19,6 +19,7 @@ import axios from "axios";
 import { v4 } from "uuid";
 import { loginAction } from "../../store/MainAuth/AuthActions";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 function LoginRightCompo() {
     const { setupRecaptcha } = useUserAuth();
     const [phnumber, setphnumber] = useState("+91");
@@ -27,6 +28,7 @@ function LoginRightCompo() {
     const [loading, setloading] = useState(false);
     const [useemail, setuseemail] = useState("");
     const [otp, setotp] = useState(false)
+    const navigate=useNavigate()
     const {
         data: { _id, imageURL, firstName, email },
     } = useSelector((store) => store.auth);
@@ -107,7 +109,7 @@ function LoginRightCompo() {
     };
 
     return (
-        <>
+        <Box >
             {_id ? (
                 <Center w={"90%"} h={"60%"} >
                     <Box
@@ -150,8 +152,9 @@ function LoginRightCompo() {
                                 _focus={{
                                     bg: "gray.200",
                                 }}
+                              
                             >
-                                My Cart Items
+                              <Link to="/cart" >  My Cart Items</Link>
                             </Button>
                             <Button
                                 flex={1}
@@ -291,7 +294,7 @@ function LoginRightCompo() {
             ) : (
                 <RightConditionRightCompo phnumber={phnumber} verifyOtp={verifyOtp} />
             )}
-        </>
+        </Box>
     );
 }
 
