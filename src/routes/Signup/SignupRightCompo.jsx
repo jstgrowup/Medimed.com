@@ -1,0 +1,202 @@
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Input,
+  HStack,
+  PinInputField,
+  PinInput,
+  Text,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { v4 } from "uuid";
+import { loginAction } from "../../store/MainAuth/AuthActions";
+import { useDispatch, useSelector } from "react-redux";
+import { useUserAuth } from "../Login/Context";
+import { useNavigate } from "react-router-dom";
+
+function SignupRightCompo() {
+  const { setupRecaptcha } = useUserAuth();
+  const [phnumber, setphnumber] = useState("+91");
+  const [otp, setotp] = useState("");
+  const [useemail, setuseemail] = useState("");
+  const dispatch = useDispatch();
+  const [result, setresult] = useState();
+  const navigate = useNavigate();
+  const [formData, setformData] = useState({
+    email: "",
+    firstName: "",
+    lastName: "",
+    password: "",
+    userid: v4(),
+    imageURL:
+      "https://user-images.githubusercontent.com/40628582/201342233-58862907-4a5e-41a8-9245-ee99734dd4e2.png",
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setformData({ ...formData, [name]: value });
+  };
+  const postUser = async () => {
+    const { email, firstName, lastName } = formData;
+    if (!email || !firstName || !lastName) {
+      alert("please enter all the required fields");
+    }
+    try {
+      const res = await axios.post(
+        "http://localhost:8080/postUserViaForm",
+        formData
+      );
+      const {
+        data: { userid },
+      } = res;
+      localStorage.setItem("email", userid);
+      setuseemail(userid);
+    } catch (e) {
+      alert(`rightcompo condition failed: ${e.message}`);
+    }
+  };
+  useEffect(() => {
+    // dispatch(loginAction());
+  }, [useemail]);
+  const getOtp = async () => {
+    try {
+      const res = await setupRecaptcha(phnumber);
+      console.log("res:", res);
+      setresult(res);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+  const verifyOtp = async (main) => {
+    try {
+      let data = await result.confirm(main);
+      console.log("data:", data);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const handleSubmit = () => {
+    verifyOtp(otp);
+    postUser();
+  };
+  const OverlayOne = () => (
+    <ModalOverlay
+      bg="blackAlpha.300"
+      backdropFilter="blur(10px) hue-rotate(90deg)"
+    />
+  );
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [overlay, setOverlay] = React.useState(<OverlayOne />);
+  const handleModal = () => {
+    getOtp()
+      .then(() => setOverlay(<OverlayOne />))
+      .then(() => onOpen())
+      .finally((res) => console.log("res:", res));
+  };
+  return (
+    <Box w={["300", "420px", "490px", "520px"]}>
+      <Flex
+        direction={"column"}
+        align="start"
+        p={["1", "3", "5", "6"]}
+        gap={"2"}
+      >
+        <Heading>Create Account</Heading>
+        <Text fontSize={"sm"} align={"start"}>
+          EMAIL ID{" "}
+        </Text>
+        <Input
+          type={"text"}
+          name={"email"}
+          onChange={handleChange}
+          placeholder="Enter your Email Id"
+        ></Input>
+        <Text fontSize={"sm"}>FIRST NAME</Text>
+        <Input
+          type={"text"}
+          name={"firstName"}
+          onChange={handleChange}
+          placeholder="Enter Your First Name"
+        ></Input>
+        <Text fontSize={"sm"}>LAST NAME</Text>
+        <Input
+          type={"text"}
+          name={"lastName"}
+          onChange={handleChange}
+          placeholder="Enter your Last Name"
+        ></Input>
+        <Text fontSize={"sm"}>PASSWORD</Text>
+        <Input
+          type={"text"}
+          name={"password"}
+          onChange={handleChange}
+          placeholder="Enter your password"
+        ></Input>
+        <Text fontSize={"sm"}>VERIFYING NUMBER</Text>
+        <Text>{`We have sent 6 digit OTP on ${phnumber}`}</Text>
+        <Text fontSize={"sm"} fontWeight={"bold"}>
+          PHONE NUMBER
+        </Text>
+
+        <Input
+          type={"text"}
+          onChange={(e) => setphnumber(e.target.value)}
+          value={phnumber}
+          placeholder="Enter your mobile no"
+        />
+
+        <div id="recaptcha-container" />
+        <Button
+          color={"white"}
+          width={"100%"}
+          bg={"#24AEB1"}
+          onClick={() => handleModal()}
+        >
+          SUBMIT
+        </Button>
+        <Modal isCentered isOpen={isOpen} onClose={onClose}>
+          {overlay}
+          <ModalContent>
+            <ModalHeader>Enter OTP</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <Flex gap={["2", "3", "4", "6"]}>
+                <PinInput otp size={"lg"} placeholder={"."} onChange={setotp}>
+                  <PinInputField />
+                  <PinInputField />
+                  <PinInputField />
+                  <PinInputField />
+                  <PinInputField />
+                  <PinInputField />
+                </PinInput>
+              </Flex>
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                onClick={handleSubmit}
+                color={"white"}
+                width={"100%"}
+                bg={"#24AEB1"}
+              >
+                VERIFY
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </Flex>
+    </Box>
+  );
+}
+
+export default SignupRightCompo;

@@ -23,6 +23,7 @@
     "react-icon": "^1.0.0",
     "react-icons": "^4.6.0",
     "react-phone-number-input": "^3.2.12",
+    "react-razorpay": "^1.2.0",
     "react-redux": "^8.0.5",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.4.3",
