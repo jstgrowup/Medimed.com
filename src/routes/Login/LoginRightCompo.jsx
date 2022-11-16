@@ -23,7 +23,7 @@ import { Link, useNavigate } from "react-router-dom";
 function LoginRightCompo() {
   const [loading, setloading] = useState(false);
   const [useemail, setuseemail] = useState("");
-
+  const navigate = useNavigate()
   const [formData, setformData] = useState({
     email: "",
     password: "",
@@ -66,6 +66,7 @@ function LoginRightCompo() {
   };
   const handleSubmit = () => {
     postUser();
+    navigate("/")
   };
 
   return (

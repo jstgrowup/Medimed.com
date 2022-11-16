@@ -54,7 +54,9 @@ function Navbar() {
   }, []);
   const getData = async () => {
     const response = await axios.get(
-      "https://medimed-backend.up.railway.app/search",
+      // "https://medimed-backend.up.railway.app/search",
+      "http://localhost:8080/search",
+
       {
         params: {
           title: text,
@@ -133,6 +135,9 @@ function Navbar() {
           {result.map((el) => {
             return (
               <Flex
+                _hover={{ backgroundColor: "lightgray" }}
+                cursor={"pointer"}
+                w={"100%"}
                 onClick={() => handleNavigate(el._id)}
                 key={el.url}
                 justify={"space-between"}
