@@ -36,18 +36,43 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../store/MainAuth/AuthActions";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Navbar() {
   const navigate = useNavigate();
+  const [text, settext] = useState("");
+  const [result, setresult] = useState([]);
+  const [posi, setposi] = useState("absolute");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
+
   const {
     data: { imageURL, firstName },
   } = useSelector((store) => store.auth);
   useEffect(() => {
     dispatch(loginAction());
   }, []);
+  const getData = async () => {
+    const response = await axios.get("http://localhost:8080/search", {
+      params: {
+        title: text,
+      },
+    });
+    const { data } = response;
 
+    setresult(data);
+  };
+  useEffect(() => {
+    if (!text) {
+      setresult([]);
+    }
+    getData();
+  }, [text]);
+  const handleNavigate = (id) => {
+    navigate(`/wellness/${id}`);
+    setresult([])
+    settext("")
+  };
   return (
     <Flex
       bg={"#32aeb0"}
@@ -67,28 +92,60 @@ function Navbar() {
         cursor={"pointer"}
         onClick={() => navigate("/")}
       />
+      <Box w={"50%"} position={"relative"}>
+        <InputGroup
+          bg={"white"}
+          borderTopRadius={"2xl"}
+          size={"lg"}
+          display={{ base: "none", lg: "flex" }}
+        >
+          <InputLeftAddon children={<InputLeftChild />} bg={"white"} />
 
-      <InputGroup
-        bg={"white"}
-        borderRadius={"2xl"}
-        size={"lg"}
-        display={{ base: "none", lg: "flex" }}
-      >
-        <InputLeftAddon children={<InputLeftChild />} bg={"white"} />
-        <Input
-          type="text"
-          placeholder="Search for medicine & wellness products..."
-          fontSize={"sm"}
-          color={"blackAlpha.700"}
-          focusBorderColor={"none"}
-          fontWeight={500}
-          _placeholder={{
-            color: "blackAlpha.300",
-            fontWeight: 500,
-            letterSpacing: 0.5,
-          }}
-        />
-      </InputGroup>
+          <Input
+            onChange={(e) => {
+              return settext(e.target.value);
+            }}
+            type="text"
+            placeholder="Search for medicine & wellness products..."
+            fontSize={"sm"}
+            color={"blackAlpha.700"}
+            focusBorderColor={"none"}
+            fontWeight={500}
+            _placeholder={{
+              color: "blackAlpha.300",
+              fontWeight: 500,
+              letterSpacing: 0.5,
+            }}
+          />
+        </InputGroup>
+        <Box
+          borderBottomRadius={"md"}
+          color={"black"}
+          bg={"white"}
+          px={"17px"}
+          h={"auto"}
+          w={"100%"}
+          position={posi}
+        >
+          {result.map((el) => {
+            return (
+              <Flex
+                onClick={() => handleNavigate(el._id)}
+                key={el.url}
+                justify={"space-between"}
+                align={"center"}
+                border={"2px"}
+                borderColor={"white"}
+                h={"50px"}
+              >
+                <Image height={"100%"} src={el.url} />
+                <Text>{el.title}</Text>
+                <Text>{el.price}</Text>
+              </Flex>
+            );
+          })}
+        </Box>
+      </Box>
       <HStack display={{ base: "none", md: "flex" }}>
         <Button
           as={NavLink}
@@ -128,10 +185,16 @@ function Navbar() {
               <PopoverBody>
                 {firstName ? (
                   <VStack>
-                    <Button bg={"#24AEB1"} onClick={() => navigate("/profile")}>
+                    <Button
+                      variant={"none"}
+                      bg={"#24AEB1"}
+                      onClick={() => navigate("/profile")}
+                    >
                       Profile
                     </Button>
-                    <Button bg={"#24AEB1"}>Logout</Button>
+                    <Button variant={"none"} bg={"#24AEB1"}>
+                      Logout
+                    </Button>
                   </VStack>
                 ) : (
                   <VStack>

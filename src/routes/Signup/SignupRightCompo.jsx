@@ -66,12 +66,12 @@ function SignupRightCompo() {
     }
   };
   useEffect(() => {
-    // dispatch(loginAction());
+    dispatch(loginAction());
   }, [useemail]);
   const getOtp = async () => {
     try {
       const res = await setupRecaptcha(phnumber);
-      console.log("res:", res);
+
       setresult(res);
     } catch (error) {
       alert(error.message);
@@ -86,24 +86,22 @@ function SignupRightCompo() {
     }
   };
 
-  const handleSubmit = () => {
-    verifyOtp(otp);
-    postUser();
+  const handleSubmit = async () => {
+    const { email, firstName, lastName } = formData;
+    if (!email || !firstName || !lastName) {
+      alert("please enter all the required fields");
+    }
+    else {
+      await getOtp()
+      await postUser();
+    }
   };
-  const OverlayOne = () => (
-    <ModalOverlay
-      bg="blackAlpha.300"
-      backdropFilter="blur(10px) hue-rotate(90deg)"
-    />
-  );
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [overlay, setOverlay] = React.useState(<OverlayOne />);
-  const handleModal = () => {
-    getOtp()
-      .then(() => setOverlay(<OverlayOne />))
-      .then(() => onOpen())
-      .finally((res) => console.log("res:", res));
-  };
+ 
+  const handleOTP = () => {
+    verifyOtp(otp)
+    navigate("/")
+  }
+ 
   return (
     <Box w={["300", "420px", "490px", "520px"]}>
       <Flex
@@ -161,39 +159,39 @@ function SignupRightCompo() {
           color={"white"}
           width={"100%"}
           bg={"#24AEB1"}
-          onClick={() => handleModal()}
+          onClick={handleSubmit}
         >
           SUBMIT
         </Button>
-        <Modal isCentered isOpen={isOpen} onClose={onClose}>
+        {/* <Modal isCentered isOpen={isOpen} onClose={onClose}>
           {overlay}
           <ModalContent>
             <ModalHeader>Enter OTP</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <Flex gap={["2", "3", "4", "6"]}>
-                <PinInput otp size={"lg"} placeholder={"."} onChange={setotp}>
-                  <PinInputField />
-                  <PinInputField />
-                  <PinInputField />
-                  <PinInputField />
-                  <PinInputField />
-                  <PinInputField />
-                </PinInput>
-              </Flex>
             </ModalBody>
             <ModalFooter>
-              <Button
-                onClick={handleSubmit}
-                color={"white"}
-                width={"100%"}
-                bg={"#24AEB1"}
-              >
-                VERIFY
-              </Button>
             </ModalFooter>
           </ModalContent>
-        </Modal>
+        </Modal> */}
+        <Flex gap={["2", "3", "4", "6"]}>
+          <PinInput otp size={"lg"} placeholder={"."} onChange={setotp}>
+            <PinInputField />
+            <PinInputField />
+            <PinInputField />
+            <PinInputField />
+            <PinInputField />
+            <PinInputField />
+          </PinInput>
+        </Flex>
+        <Button
+          onClick={handleOTP}
+          color={"white"}
+          width={"100%"}
+          bg={"#24AEB1"}
+        >
+          VERIFY
+        </Button>
       </Flex>
     </Box>
   );

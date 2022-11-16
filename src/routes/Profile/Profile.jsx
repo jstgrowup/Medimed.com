@@ -1,8 +1,10 @@
-import { Avatar, Box, Button, Center, Heading, Stack } from '@chakra-ui/react'
+import { Avatar, Box, Button, Center, Heading, Stack,Text } from '@chakra-ui/react'
 import React from 'react'
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
+    const navigate= useNavigate();
     const {
         data: { _id, imageURL, firstName, email },
     } = useSelector((store) => store.auth);
@@ -19,12 +21,12 @@ function Profile() {
         window.location.href = "mailto:deysubham999@gmail.com";
     }
     return (
-        <Box>
-            <Center w={"90%"} h={"60%"} >
+        <Box p={"10"}>
+            <Center  h={"60%"} >
                 <Box
 
                     height={"100%"}
-                    w={"100%"}
+                    w={"50%"}
                     rounded={"lg"}
                     // p={6}
                     textAlign={"center"}
@@ -33,7 +35,7 @@ function Profile() {
                         size={["sm", "md", "xl"]}
                         src={imageURL}
                         alt={"Avatar Alt"}
-                        // mb={4}
+                       
                         pos={"relative"}
                         _after={{
                             content: '""',
@@ -59,12 +61,19 @@ function Profile() {
                             size="lg"
                             onClick={() => navigate("/cart")}
                             flex={1}
+                            boxShadow={
+                                '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
+                            }
+                            _hover={{
+                                bg: '#32AEB0',
+                            }}
+                            _focus={{
+                                bg: '#32AEB0',
+                            }}
                             color={"white"}
                             fontSize={'sm'}
                             rounded={'full'}
-                            _focus={{
-                                bg: '#32AEB0',
-                            }}>
+                           >
                             My Cart
                         </Button>
 
