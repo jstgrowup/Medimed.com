@@ -47,7 +47,7 @@ function LoginRightCompo() {
     }
     try {
       const res = await axios.post(
-        "https://testbe-production.up.railway.app/loginuser",
+        "https://medimed-backend.up.railway.app/loginuser",
         {
           email: email,
           password: password,
@@ -69,7 +69,7 @@ function LoginRightCompo() {
   };
 
   return (
-    <Box  w={["300", "420px", "490px", "520px"]}>
+    <Box w={["300", "420px", "490px", "520px"]}>
       <Flex
         direction={"column"}
         align="start"

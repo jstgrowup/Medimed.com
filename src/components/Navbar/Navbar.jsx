@@ -53,11 +53,14 @@ function Navbar() {
     dispatch(loginAction());
   }, []);
   const getData = async () => {
-    const response = await axios.get("http://localhost:8080/search", {
-      params: {
-        title: text,
-      },
-    });
+    const response = await axios.get(
+      "https://medimed-backend.up.railway.app/search",
+      {
+        params: {
+          title: text,
+        },
+      }
+    );
     const { data } = response;
 
     setresult(data);
@@ -70,8 +73,8 @@ function Navbar() {
   }, [text]);
   const handleNavigate = (id) => {
     navigate(`/wellness/${id}`);
-    setresult([])
-    settext("")
+    setresult([]);
+    settext("");
   };
   return (
     <Flex

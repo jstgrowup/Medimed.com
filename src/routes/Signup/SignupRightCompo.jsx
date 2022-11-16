@@ -53,7 +53,7 @@ function SignupRightCompo() {
     }
     try {
       const res = await axios.post(
-        "http://localhost:8080/postUserViaForm",
+        "https://medimed-backend.up.railway.app/postUserViaForm",
         formData
       );
       const {
@@ -90,18 +90,17 @@ function SignupRightCompo() {
     const { email, firstName, lastName } = formData;
     if (!email || !firstName || !lastName) {
       alert("please enter all the required fields");
-    }
-    else {
-      await getOtp()
+    } else {
+      await getOtp();
       await postUser();
     }
   };
- 
+
   const handleOTP = () => {
-    verifyOtp(otp)
-    navigate("/")
-  }
- 
+    verifyOtp(otp);
+    navigate("/");
+  };
+
   return (
     <Box w={["300", "420px", "490px", "520px"]}>
       <Flex
