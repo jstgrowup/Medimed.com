@@ -37,21 +37,37 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../store/MainAuth/AuthActions";
 import { useEffect, useState } from "react";
 import axios from "axios";
+const getCartData = async (id) => {
+  // https://medimedcom-backend-production.up.railway.app/products
+  try {
+    let res = await axios.get("http://localhost:8080/carts", {
+      headers: { userid: id },
+    });
+    const { data } = res;
 
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 function Navbar() {
   const navigate = useNavigate();
   const [text, settext] = useState("");
   const [result, setresult] = useState([]);
   const [posi, setposi] = useState("absolute");
+  const [cartdata, setcartdata] = useState([]);
+  const [Cartlength, setlength] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
 
   const {
-    data: { imageURL, firstName },
+    data: { imageURL, firstName, _id },
   } = useSelector((store) => store.auth);
+
   useEffect(() => {
     dispatch(loginAction());
   }, []);
+
   const getData = async () => {
     const response = await axios.get(
       // "https://medimed-backend.up.railway.app/search",
@@ -73,11 +89,17 @@ function Navbar() {
     }
     getData();
   }, [text]);
+
   const handleNavigate = (id) => {
     navigate(`/wellness/${id}`);
     setresult([]);
     settext("");
   };
+
+  useEffect(() => {
+    getCartData(_id).then((res) => setcartdata(res));
+   
+  }, []);
   return (
     <Flex
       bg={"#32aeb0"}
@@ -176,7 +198,10 @@ function Navbar() {
             top={1}
             left={7}
           >
-            0
+            {/* {localStorage.getItem("length")} */}
+            {/* {!cartdata.length ? 0 : cartdata.length }
+             */}
+             0
           </Box>
         </Button>
 

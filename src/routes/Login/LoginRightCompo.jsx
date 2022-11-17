@@ -47,7 +47,7 @@ function LoginRightCompo() {
     }
     try {
       const res = await axios.post(
-        "https://medimed-backend.up.railway.app/loginuser",
+        "http://localhost:8080/loginuser",
         {
           email: email,
           password: password,

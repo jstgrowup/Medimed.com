@@ -53,7 +53,7 @@ function SignupRightCompo() {
     }
     try {
       const res = await axios.post(
-        "https://medimed-backend.up.railway.app/postUserViaForm",
+        "http://localhost:8080/postUserViaForm",
         formData
       );
       const {

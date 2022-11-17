@@ -16,12 +16,9 @@ import PaymentDetails from "./paymentDetails/PaymentDetails";
 const mainColor = "rgb(50,174,177)";
 const getCartData = async (id) => {
   // https://medimedcom-backend-production.up.railway.app/products
-  let data = await axios.get(
-    "https://testbe-production.up.railway.app/carts",
-    {
-      headers: { userid: id },
-    }
-  );
+  let data = await axios.get("http://localhost:8080/carts", {
+    headers: { userid: id },
+  });
   return data;
 };
 function Cart() {
@@ -63,13 +60,10 @@ function Cart() {
     setCartState({ ...cartState, loading: true, error: false, success: false });
     try {
       // let d=await axios.post("https://medimedcom-backend-production.up.railway.app/carts/update",{
-      let d = await axios.post(
-        "https://testbe-production.up.railway.app/carts/update",
-        {
-          type: type,
-          productId: id._id,
-        }
-      );
+      let d = await axios.post("http://localhost:8080/carts/update", {
+        type: type,
+        productId: id._id,
+      });
     } catch (e) {
       console.log(e);
       setCartState({
@@ -92,12 +86,9 @@ function Cart() {
   const removeCartHandler = async (id) => {
     setCartState({ ...cartState, loading: true, error: false, success: false });
     try {
-      await axios.post(
-        "https://testbe-production.up.railway.app/carts/remove",
-        {
-          productId: id,
-        }
-      );
+      await axios.post("http://localhost:8080/carts/remove", {
+        productId: id,
+      });
       getCartData(_id)
         .then((res) => {
           setCartData([...res.data]);

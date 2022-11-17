@@ -27,7 +27,7 @@ const mainColor = "rgb(50,174,177)";
 // https://medimedcom-backend-production.up.railway.app/
 const getData = async (id) => {
   let d = await axios.get(
-    `https://medimedcom-backend-production.up.railway.app/products/single/${id}`
+    `http://localhost:8080/products/single/${id}`
   );
   // let d=await axios.get(`https://netmeds-new-api.herokuapp.com/products/${id}`)
 
@@ -49,7 +49,7 @@ export default function SingleProduct() {
     success: false,
   });
   const toast = useToast();
-
+  
   // Add a request interceptor
   axios.interceptors.request.use(
     function (config) {
@@ -88,7 +88,7 @@ export default function SingleProduct() {
     });
     try {
       let d = await axios.post(
-        "https://medimedcom-backend-production.up.railway.app/carts/create",
+        "http://localhost:8080/carts/create",
         {
           productId: id,
         }
