@@ -98,8 +98,16 @@ function Navbar() {
 
   useEffect(() => {
     getCartData(_id).then((res) => setcartdata(res));
-   
   }, []);
+  const handleLogout = async () => {
+    try {
+      localStorage.removeItem("email");
+
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Flex
       bg={"#32aeb0"}
@@ -201,13 +209,14 @@ function Navbar() {
             {/* {localStorage.getItem("length")} */}
             {/* {!cartdata.length ? 0 : cartdata.length }
              */}
-             0
+            0
           </Box>
         </Button>
 
         <Popover trigger="hover" size={"lg"}>
           <PopoverTrigger>
             <Button variant={"none"}>
+              <Image src={imageURL} boxSize={"6"} borderRadius={"full"} />
               {firstName ? firstName : "Sign in / Sign up"}
             </Button>
           </PopoverTrigger>
@@ -225,7 +234,11 @@ function Navbar() {
                     >
                       Profile
                     </Button>
-                    <Button variant={"none"} bg={"#24AEB1"}>
+                    <Button
+                      onClick={handleLogout}
+                      variant={"none"}
+                      bg={"#24AEB1"}
+                    >
                       Logout
                     </Button>
                   </VStack>
@@ -324,13 +337,7 @@ function Navbar() {
                 bg={"#32AEB0"}
                 color={"white"}
                 letterSpacing={1}
-                leftIcon={
-                  imageURL ? (
-                    <Image src={imageURL} borderRadius={"full"} boxSize={"7"} />
-                  ) : (
-                    <FaUserCircle size={22} />
-                  )
-                }
+                leftIcon={imageURL}
                 variant={"none"}
               >
                 {firstName ? firstName : "Sign in / Sign up"}

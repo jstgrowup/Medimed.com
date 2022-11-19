@@ -23,7 +23,7 @@ import { Link, useNavigate } from "react-router-dom";
 function LoginRightCompo() {
   const [loading, setloading] = useState(false);
   const [useemail, setuseemail] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [formData, setformData] = useState({
     email: "",
     password: "",
@@ -46,13 +46,10 @@ function LoginRightCompo() {
       alert("please enter all the required fields");
     }
     try {
-      const res = await axios.post(
-        "http://localhost:8080/loginuser",
-        {
-          email: email,
-          password: password,
-        }
-      );
+      const res = await axios.post("http://localhost:8080/loginuser", {
+        email: email,
+        password: password,
+      });
       const {
         data: { userid },
       } = res;
@@ -66,7 +63,7 @@ function LoginRightCompo() {
   };
   const handleSubmit = () => {
     postUser();
-    navigate("/")
+    navigate("/");
   };
 
   return (
@@ -106,10 +103,10 @@ function LoginRightCompo() {
         >
           Login
         </Button>
-        <Text color={"red"}>
-          If you dont have an account please enter the phone number and proceed
-          to signup
-        </Text>
+        <Flex>
+          <Text onClick={()=>navigate("/signup")} color={"red"}>Dont have an account?</Text>
+          <Text  color={"red "} onClick={()=>navigate("/signup")}>Signup</Text>
+        </Flex>
 
         <Flex gap={"20"} width={"100%"} justify={"space-between"}>
           <Button

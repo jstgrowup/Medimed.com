@@ -40,7 +40,6 @@ function Wellness() {
     getCartData()
       .then((res) => {
         setData([...res.data]);
-        console.log(res.data);
       })
       .catch((e) => {
         console.log(e);
@@ -84,7 +83,7 @@ function Wellness() {
         display={{ base: "none", md: "flex" }}
       >
         {categoryArr.map((item) => (
-          <Text fontSize={{ base: 11, lg: "sm" }} cursor={"pointer"}>
+          <Text key={item} fontSize={{ base: 11, lg: "sm" }} cursor={"pointer"}>
             {item}
           </Text>
         ))}
@@ -387,6 +386,7 @@ function Wellness() {
             .splice(0, 4)
             .map((el) => (
               <Flex
+              key={el._id}
                 wrap={"wrap"}
                 direction={"column"}
                 minHeight={"400px"}
@@ -398,7 +398,7 @@ function Wellness() {
                 //height={340}
                 bg={"white"}
               >
-                <Link key={el._id} to={`/wellness/${el._id}`}>
+                <Link  to={`/wellness/${el._id}`}>
                   <Box lineHeight={2} height={"80%"}>
                     <img src={el.url} alt=""></img>
                     <Text fontSize={13} fontWeight={"bold"} pt={3} pl={1}>

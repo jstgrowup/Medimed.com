@@ -8,6 +8,7 @@ import {
   PinInputField,
   PinInput,
   Text,
+  Spinner,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -16,7 +17,9 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { v4 } from "uuid";
@@ -26,6 +29,8 @@ import { useUserAuth } from "../Login/Context";
 import { useNavigate } from "react-router-dom";
 
 function SignupRightCompo() {
+  const toast = useToast();
+  const [spinner, setspinner] = useState(false);
   const { setupRecaptcha } = useUserAuth();
   const [phnumber, setphnumber] = useState("+91");
   const [otp, setotp] = useState("");
@@ -87,17 +92,33 @@ function SignupRightCompo() {
   };
 
   const handleSubmit = async () => {
+    setspinner(true);
     const { email, firstName, lastName } = formData;
     if (!email || !firstName || !lastName) {
       alert("please enter all the required fields");
     } else {
       await getOtp();
       await postUser();
+      setspinner(false);
+      toast({
+        title: "OTP sent",
+        description: "We've sent a 6 digit OTP to your registerder number",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
     }
   };
 
   const handleOTP = () => {
     verifyOtp(otp);
+    toast({
+      title: "OTP verified",
+      description: "We've sent a 6 digit OTP to your registerder number",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+    });
     navigate("/");
   };
 
@@ -155,12 +176,17 @@ function SignupRightCompo() {
 
         <div id="recaptcha-container" />
         <Button
+          colorScheme="blue"
           color={"white"}
           width={"100%"}
           bg={"#24AEB1"}
+          _hover={{ backgroundColor: "#24AEB1" }}
           onClick={handleSubmit}
         >
-          SUBMIT
+          <Flex justify={"space-around"} gap={"3"}>
+            <Text>GET OTP</Text>
+            {spinner && <Spinner />}
+          </Flex>
         </Button>
         {/* <Modal isCentered isOpen={isOpen} onClose={onClose}>
           {overlay}
@@ -189,7 +215,7 @@ function SignupRightCompo() {
           width={"100%"}
           bg={"#24AEB1"}
         >
-          VERIFY
+          VERIFY OTP
         </Button>
       </Flex>
     </Box>
