@@ -9,15 +9,15 @@ import { UserAuthContextProvider } from "./routes/Login/Context";
 import { store } from "./store/store";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-   <React.StrictMode>
-      <Provider store={store}>
-         <UserAuthContextProvider>
-            <ChakraProvider>
-               <BrowserRouter>
-                  <App />
-               </BrowserRouter>
-            </ChakraProvider>
-         </UserAuthContextProvider>
-      </Provider>
-   </React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
+      <UserAuthContextProvider>
+        <ChakraProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ChakraProvider>
+      </UserAuthContextProvider>
+    </Provider>
+  </React.StrictMode>
 );

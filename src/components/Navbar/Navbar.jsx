@@ -38,9 +38,8 @@ import { loginAction } from "../../store/MainAuth/AuthActions";
 import { useEffect, useState } from "react";
 import axios from "axios";
 const getCartData = async (id) => {
-  // https://medimedcom-backend-production.up.railway.app/products
   try {
-    let res = await axios.get("http://localhost:8080/carts", {
+    let res = await axios.get("https://medimed-backend.up.railway.app/carts", {
       headers: { userid: id },
     });
     const { data } = res;
@@ -63,6 +62,7 @@ function Navbar() {
   const {
     data: { imageURL, firstName, _id },
   } = useSelector((store) => store.auth);
+  
 
   useEffect(() => {
     dispatch(loginAction());
@@ -70,8 +70,7 @@ function Navbar() {
 
   const getData = async () => {
     const response = await axios.get(
-      // "https://medimed-backend.up.railway.app/search",
-      "http://localhost:8080/search",
+      "https://medimed-backend.up.railway.app/search",
 
       {
         params: {
@@ -80,6 +79,7 @@ function Navbar() {
       }
     );
     const { data } = response;
+    console.log("data:", data);
 
     setresult(data);
   };

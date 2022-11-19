@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import useRazorpay from "react-razorpay";
 const Payment = () => {
@@ -21,12 +21,14 @@ const Payment = () => {
   const [discountAmount, setdiscountAmount] = useState("");
   const prop = useSelector((store) => store.auth);
   const toast = useToast();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+
+
   const handleAmount = async (rupess) => {
-    const { data } = await axios.post("http://localhost:8080/order", {
+    const { data } = await axios.post("https://medimed-backend.up.railway.app/order", {
       amount: rupess,
     });
-    
+
     const options = {
       key: "rzp_test_fKqaOka3L8s0hG", //Enter the Key ID generated from the Dashboard
       amount: rupess * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -61,7 +63,7 @@ const Payment = () => {
     const rzp1 = new Razorpay(options);
 
     rzp1.open();
-    navigate("/")
+    navigate("/");
   };
   const { discount, price, total } = useSelector(
     (store) => store.paymentState.payload
@@ -71,7 +73,6 @@ const Payment = () => {
   const [check, setCheck] = useState(false);
 
   let DiscountPrice = JSON.parse(localStorage.getItem("DiscountPrice")) || "";
-
 
   useEffect(() => {
     settotalAmount(total);

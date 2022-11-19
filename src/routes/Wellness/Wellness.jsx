@@ -29,7 +29,7 @@ const getCartData = async () => {
   //const toast = useToast()
   // https://medimedcom-backend-production.up.railway.app/products
   let data = await axios.get(
-    "https://medimedcom-backend-production.up.railway.app/products"
+    "https://medimed-backend.up.railway.app/products"
   );
   return data;
 };
@@ -49,7 +49,7 @@ function Wellness() {
   const addToCartHandler = async (id) => {
     // cartBtnSetState({...cartBtnState,loading:true,error:false,success:false})
     try {
-      let d = await axios.post("http://localhost:8080/carts/create", {
+      let d = await axios.post("https://medimed-backend.up.railway.app/carts/create", {
         productId: id,
       });
       console.log(d);

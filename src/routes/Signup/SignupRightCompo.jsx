@@ -27,8 +27,10 @@ import { loginAction } from "../../store/MainAuth/AuthActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useUserAuth } from "../Login/Context";
 import { useNavigate } from "react-router-dom";
+import PhoneInput from "react-phone-number-input";
 
 function SignupRightCompo() {
+
   const toast = useToast();
   const [spinner, setspinner] = useState(false);
   const { setupRecaptcha } = useUserAuth();
@@ -58,7 +60,7 @@ function SignupRightCompo() {
     }
     try {
       const res = await axios.post(
-        "http://localhost:8080/postUserViaForm",
+        "https://medimed-backend.up.railway.app/postUserViaForm",
         formData
       );
       const {
@@ -94,6 +96,17 @@ function SignupRightCompo() {
   const handleSubmit = async () => {
     setspinner(true);
     const { email, firstName, lastName } = formData;
+    if (!phnumber.startsWith("+91")) {
+      toast({
+        title: "please make sure your phone number startsWith +91",
+        description: "We've sent a 6 digit OTP to your registerder number",
+        status: "warning",
+        duration: 2000,
+        isClosable: true,
+      });
+      window.location.reload();
+      return false;
+    }
     if (!email || !firstName || !lastName) {
       alert("please enter all the required fields");
     } else {
@@ -113,10 +126,10 @@ function SignupRightCompo() {
   const handleOTP = () => {
     verifyOtp(otp);
     toast({
-      title: "OTP verified",
-      description: "We've sent a 6 digit OTP to your registerder number",
+      title: "Login successfull",
+      description: "Welcome to Medimed",
       status: "success",
-      duration: 9000,
+      duration: 1000,
       isClosable: true,
     });
     navigate("/");

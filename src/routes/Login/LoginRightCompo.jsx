@@ -46,16 +46,17 @@ function LoginRightCompo() {
       alert("please enter all the required fields");
     }
     try {
-      const res = await axios.post("http://localhost:8080/loginuser", {
+      const res = await axios.post("https://medimed-backend.up.railway.app/loginuser", {
         email: email,
         password: password,
       });
       const {
         data: { userid },
       } = res;
-      console.log("res:", res);
+   
       localStorage.setItem("email", userid);
       setuseemail(userid);
+      window.location.reload();
     } catch (e) {
       console.log(e);
       alert(`user not found please enter valid email`);
