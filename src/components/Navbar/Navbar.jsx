@@ -62,7 +62,6 @@ function Navbar() {
   const {
     data: { imageURL, firstName, _id },
   } = useSelector((store) => store.auth);
-  
 
   useEffect(() => {
     dispatch(loginAction());
@@ -217,6 +216,7 @@ function Navbar() {
           <PopoverTrigger>
             <Button variant={"none"}>
               <Image src={imageURL} boxSize={"6"} borderRadius={"full"} />
+
               {firstName ? firstName : "Sign in / Sign up"}
             </Button>
           </PopoverTrigger>

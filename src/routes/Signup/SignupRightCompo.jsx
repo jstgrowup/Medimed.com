@@ -30,7 +30,6 @@ import { useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 
 function SignupRightCompo() {
-
   const toast = useToast();
   const [spinner, setspinner] = useState(false);
   const { setupRecaptcha } = useUserAuth();
@@ -47,7 +46,7 @@ function SignupRightCompo() {
     password: "",
     userid: v4(),
     imageURL:
-      "https://user-images.githubusercontent.com/40628582/201342233-58862907-4a5e-41a8-9245-ee99734dd4e2.png",
+      "https://user-images.githubusercontent.com/40628582/202887621-79e9def3-55b5-4afd-b382-2561a6c915bd.jpg",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;

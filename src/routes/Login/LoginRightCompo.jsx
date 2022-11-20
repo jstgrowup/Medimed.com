@@ -13,7 +13,7 @@ import {
 import React, { useEffect, useState } from "react";
 
 import { FaFacebookSquare } from "react-icons/fa";
-// import RightConditionRightCompo from "./RightCompoRightCondition";
+
 import { useUserAuth } from "./Context";
 import axios from "axios";
 import { v4 } from "uuid";
@@ -29,7 +29,7 @@ function LoginRightCompo() {
     password: "",
     userid: v4(),
     imageURL:
-      "https://user-images.githubusercontent.com/40628582/201342233-58862907-4a5e-41a8-9245-ee99734dd4e2.png",
+      "https://user-images.githubusercontent.com/40628582/202887621-79e9def3-55b5-4afd-b382-2561a6c915bd.jpg",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,26 +37,25 @@ function LoginRightCompo() {
   };
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(loginAction());
-  }, [formData, useemail]);
   const postUser = async () => {
     const { email, password } = formData;
     if (!email && !password) {
       alert("please enter all the required fields");
     }
     try {
-      const res = await axios.post("https://medimed-backend.up.railway.app/loginuser", {
-        email: email,
-        password: password,
-      });
+      const res = await axios.post(
+        "https://medimed-backend.up.railway.app/loginuser",
+        {
+          email: email,
+          password: password,
+        }
+      );
       const {
         data: { userid },
       } = res;
-   
+
       localStorage.setItem("email", userid);
       setuseemail(userid);
-      window.location.reload();
     } catch (e) {
       console.log(e);
       alert(`user not found please enter valid email`);
@@ -67,6 +66,9 @@ function LoginRightCompo() {
     navigate("/");
   };
 
+  useEffect(() => {
+    dispatch(loginAction());
+  }, [formData, useemail]);
   return (
     <Box w={["300", "420px", "490px", "520px"]}>
       <Flex
@@ -105,8 +107,12 @@ function LoginRightCompo() {
           Login
         </Button>
         <Flex>
-          <Text onClick={()=>navigate("/signup")} color={"red"}>Dont have an account?</Text>
-          <Text  color={"red "} onClick={()=>navigate("/signup")}>Signup</Text>
+          <Text onClick={() => navigate("/signup")} color={"red"}>
+            Dont have an account?
+          </Text>
+          <Text color={"red "} onClick={() => navigate("/signup")}>
+            Signup
+          </Text>
         </Flex>
 
         <Flex gap={"20"} width={"100%"} justify={"space-between"}>
