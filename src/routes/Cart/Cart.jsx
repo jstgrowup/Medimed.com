@@ -25,6 +25,7 @@ function Cart() {
   const userData = useSelector((store) => store.auth);
   // console.log('userData:', userData)
   const [cartData, setCartData] = useState([]);
+  console.log('cartData:', cartData)
   const toast = useToast();
   const {
     data: { _id },
@@ -49,7 +50,7 @@ function Cart() {
     getCartData(_id)
       .then((res) => {
         setCartData([...res.data]);
-        // console.log(res.data);
+        
       })
       .catch((e) => {
         console.log(e);

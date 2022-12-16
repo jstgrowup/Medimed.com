@@ -33,10 +33,7 @@ function Profile() {
     setbool(!bool);
     navigate("/login");
   };
-  // useEffect(() => {
-  //   dispatch(loginAction());
-  // }, [bool]);
-
+  
   const handleMail = () => {
     window.location.href = "mailto:deysubham999@gmail.com";
   };

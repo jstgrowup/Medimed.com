@@ -15,6 +15,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import useRazorpay from "react-razorpay";
+import PayButton from "./PayButton";
 
 const Payment = () => {
   const Razorpay = useRazorpay();
@@ -25,7 +26,7 @@ const Payment = () => {
   const navigate = useNavigate();
 
   const handleAmount = async (rupess) => {
-    const { data } = await axios.post("http://localhost:8080/order", {
+    const { data } = await axios.post("http://localhost:8080/payment/order", {
       amount: rupess,
     });
 
@@ -72,8 +73,6 @@ const Payment = () => {
   const [flag, setFlag] = useState(false);
   const [check, setCheck] = useState(false);
 
-
-
   useEffect(() => {
     settotalAmount(total);
     setdiscountAmount(discount);
@@ -81,6 +80,7 @@ const Payment = () => {
 
   return (
     <>
+ 
       <Box
         direction={["column", "column", "row", "row"]}
         width={"100%"}
@@ -304,15 +304,17 @@ const Payment = () => {
                         {!check ? (
                           <Box></Box>
                         ) : (
-                          <Button
-                            onClick={() => handleSuccess()}
-                            mt={3}
-                            mr={0}
-                            bg={"#24AEB1"}
-                            color={"white"}
-                          >
-                            PAY Rs {discountAmount}
-                          </Button>
+                          <>
+                            <Button
+                              onClick={() => handleSuccess()}
+                              mt={3}
+                              mr={0}
+                              bg={"#24AEB1"}
+                              color={"white"}
+                            >
+                              PAY Rs {discountAmount}
+                            </Button>
+                          </>
                         )}
                       </Box>
                     </Box>
@@ -622,8 +624,8 @@ const Payment = () => {
 
                 <Box>
                   {" "}
-                  <Button onClick={() => handleAmount(total)} size={"lg"}>
-                    PROCEED
+                  <Button onClick={() => handleAmount(total)} size={"md"}>
+                    <PayButton />
                   </Button>{" "}
                 </Box>
               </Box>
