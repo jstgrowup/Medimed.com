@@ -33,7 +33,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../store/MainAuth/AuthActions";
 import { useEffect, useState } from "react";
-
+import axios from "axios";
 function Navbar() {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -53,7 +53,7 @@ function Navbar() {
   };
   const getData = async () => {
     const response = await axios.get(
-      "https://medimed-backend.up.railway.app/search",
+      "http://localhost:8080/search",
 
       {
         params: {
@@ -66,12 +66,12 @@ function Navbar() {
 
     // setresult(data);
   };
-  useEffect(() => {
-    if (!text) {
-      // setresult([]);
-    }
-    getData();
-  }, [text]);
+  // useEffect(() => {
+  //   if (!text) {
+  //     // setresult([]);
+  //   }
+  //   getData();
+  // }, [text]);
   return (
     <Flex
       bg={"#32aeb0"}

@@ -78,6 +78,19 @@ function LoginRightCompo() {
           phnumber: phoneNumber,
         }
       );
+
+      if (res.status === 404) {
+        onClose();
+        setloading(false);
+
+        toast({
+          title: "User not found please create an account",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+        navigate("/signup");
+      }
       if (res.status === 200) {
         onClose();
         setloading(false);
@@ -138,12 +151,16 @@ function LoginRightCompo() {
     //   });
     // }
   };
-  // const handleGoogleSignIn = async () => {
-  //   await googleSignIn();
-  //   await onSuccess();
-  // };
-
-  
+  const handleGoogleSignIn = () => {
+    toast({
+      title: `Feature not available`,
+      description:
+        "Sorry this Feature is in pipeline you can wait for future updates",
+      status: "warning",
+      duration: 2000,
+      isClosable: true,
+    });
+  };
 
   const onsubmit = () => {
     getOtp().then(() => onOpen());
@@ -235,7 +252,7 @@ function LoginRightCompo() {
           </Modal>
           <Flex gap={"20"} width={"100%"} justify={"space-between"}>
             <Button
-              // onClick={handleGoogleSignIn}
+              onClick={handleGoogleSignIn}
               size={"md"}
               bg={"white"}
               border={"1px solid grey"}
@@ -252,6 +269,7 @@ function LoginRightCompo() {
             </Button>
 
             <Button
+              onClick={handleGoogleSignIn}
               size={"md"}
               bg={"white"}
               border={"1px solid gray"}

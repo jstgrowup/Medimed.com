@@ -29,7 +29,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useUserAuth } from "../Login/Context";
 import { Link, useNavigate } from "react-router-dom";
 
-
 function SignupRightCompo() {
   const toast = useToast();
   const [useemail, setuseemail] = useState("");
@@ -41,8 +40,7 @@ function SignupRightCompo() {
     firstName: "",
     lastName: "",
     phnumber: "",
-    imageURL:
-      "https://user-images.githubusercontent.com/40628582/201342233-58862907-4a5e-41a8-9245-ee99734dd4e2.png",
+    imageURL: "https://i.pravatar.cc/300",
   });
 
   useEffect(() => {
