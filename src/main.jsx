@@ -11,13 +11,13 @@ import { store } from "./store/store";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <UserAuthContextProvider>
-        <ChakraProvider>
-          <BrowserRouter>
+      <ChakraProvider>
+        <BrowserRouter>
+          <UserAuthContextProvider>
             <App />
-          </BrowserRouter>
-        </ChakraProvider>
-      </UserAuthContextProvider>
+          </UserAuthContextProvider>
+        </BrowserRouter>
+      </ChakraProvider>
     </Provider>
   </React.StrictMode>
 );

@@ -1,68 +1,110 @@
-# Time Camp Clone
+# Medimed.com
 
-# Summary
 
-Medimed is an ecommerce website for medicines This is the project we tried to clone the website Netmeds.com (https://www.Netmeds.com) we were a team of 4 people who have contibuted in this project. About
-This website is an International Ecommerce website. You can Buy medicines and do many diagnostic tests on this website. In this clone website i have done the cart page, I have created all the functionality same as the original website using HTML,CSS and JS..
-​
 
-## Screenshots
 
-- ### Landing Page
 
-  ![Landing Page](https://i.ibb.co/27bSjG7/Screenshot-254.png)
-  ​
+ <h2>Welcome to this repo</h2>
+ We are team of 4 members ( Md Mostafijur Rahman, SK Ismile, Subham Dey, Subham Dey ) has completed the task in 5 days and Given our 
+ best efforts to Construct this project.
+In case of any suggestion and query feel free to connect us.
+ 
+ <h1> FOR FRONTEND TOOLS AND TECHNOLOGY USED ></h1>
+  <li>HTML</li>
+  <li>css</li>
+<li>javascript</li>  
+<li>font Awesom icons</li>
+<li>chakra ui</li>
 
-- ## Features Page
+ <h1> FOR BACKEND TOOLS AND TECHNOLOGY USED ></h1>
+  <li>NODE JS</li>
+  <li>EXPRESS JS</li>
+<li>MONGO DB</li>  
 
-  ![Features Page](https://i.ibb.co/SPcv0LL/Screenshot-255.png)
 
-- ## Pricing Page
+ 
+### Project Description
+ 
+ 
+ <h1>About </h1>
+Medimed.com is inspired by Netmeds.com, Netmeds.com is a trusted Indian online pharmacy. In this project users can sign up, log in, explore products, checkout, and can do much more.
 
-![Pricing Page](https://i.ibb.co/7NpXm7H/Screenshot-256.png)
+---
 
-- ## Login Page
+### Netlify Link
+ 
+https://medimed.netlify.app
+ 
+ 
+ ### Following are the Screenshots for the reference
 
-![Login Page](https://i.ibb.co/89BnJrW/Screenshot-257.png)
+- *Landing Page*
+ ![medimadhome](https://user-images.githubusercontent.com/101392872/204127493-f5b55119-deb8-4079-9336-f35327ff4a6b.png)
 
-- ## Signup Page
 
-![Signup Page](https://i.ibb.co/fCsTyZW/Screenshot-258.png)
+- *Wellness Page*
+![medimed netlify app_wellness](https://user-images.githubusercontent.com/101392872/204127503-0f68d4a5-8714-46e3-9170-68e29f961f61.png)
 
-- ## Dashboard Page
+  
 
-![Dashboard Page](https://i.ibb.co/d07Tw59/Screenshot-259.png)
+- *Product-details Page*
+![medimed netlify app_wellness_6374ebe6a20fe6ac84451095](https://user-images.githubusercontent.com/101392872/204127520-a36da8b8-be25-4c7a-beb5-cff35e09cbdf.png)
 
-# Features
+ 
 
-- ## Sign up and Login Page
-  This website allows users to create their own account and sign in using the required email id and passowrd. If the required details are missing, the user won't be able to login into the website. Without the users signed in, the user would not be able access the dashboard page.
-- ## Home page
-  The landing page is the most important page of any website. It helps the user navigate through all the different pages and get the informations.
-- ## Features page
-  All the Features pages provide the list of all the avaiable features that are available to a certain category.
-- ## Pricing page
-  Pricing page has all the information about all the individual Features along with there respected prices
-- ## Dashboard page
-  After the user is logged in he/she will be able to get the access to the dashboard page where the user can add the tasks as well as delete it and add the time as well if the user wants to logout of the page there is a logout button as well and the user will be redirected to the login page.
-  ​
+- *Cart-Page*
 
-# Tech Stacks
+  ![medimed netlify app_cart (1)](https://user-images.githubusercontent.com/101392872/204127538-ede21cf9-06e7-48ab-a1c3-c60d10a69492.png)
 
-- CSS
-- JavaScript
-- ChakraUI
-- BootStarp
-- Redux
-- React
-- Google-Firebase
 
-## Authors
+- *Payment Page*
 
-- [@Sriram Boksa](https://github.com/ssksds)
-- [@Subham Dey](https://github.com/jstgrowup)
-- [@Apurba Adhikary](https://github.com/itsApurba)
-- [@Shivam Maurya](https://github.com/shivam0626)
-- [@Swapnil Kushwaha](https://github.com/Swapnil-kus-1503)
+  ![medimed netlify app_cart (2)](https://user-images.githubusercontent.com/101392872/204127565-4d58a96e-f6e4-45d6-bdf8-34b18217fc99.png)
 
-  ​
+  
+
+- *Sign-In/Sing-up Page*
+![medimed netlify app_login](https://user-images.githubusercontent.com/101392872/204127579-95453a43-f24f-4f91-b236-ffaace749e68.png)
+
+- *User Profile Page* 
+![medimed netlify app_](https://user-images.githubusercontent.com/101392872/204127630-6d1a4f0b-7877-461d-95ca-2a94f5596a99.png)
+
+
+
+
+---
+
+### About Project
+
+> We did this project within 5 days in our unit-6 construct week.
+Medimed.com is inspired by Netmeds.com, Netmeds.com is a trusted Indian online pharmacy. In this project users can sign up, log in, explore products, checkout, and can do much more..
+
+---
+
+------
+
+### Netlify Link
+
+https://medimed.netlify.app
+------
+ 
+<h1>WEBSITE USER FLOW ></h1>
+
+the user flow that we tried to maintain is,
+<br/>
+home -> login/signup -> Wellness Page -> choose products -> Product detail page-> -> Products Check out page ->payment status -> order placed 
+
+
+ <h1>TEAM MEMBERS AND MESSAGE></h1>
+we really enjoyed this whole part of developing and had a learing experience and have given our best efforts to bring the BEST thing as POSSIBLE.
+
+### Team Members
+
+- **[Md Mostafijur Rahman]**
+- **[SK Ismile]**
+- **[Pratik Kharat]**
+- **[Subham Dey]**
+
+
+---
+

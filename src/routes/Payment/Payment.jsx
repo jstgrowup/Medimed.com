@@ -11,10 +11,11 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import useRazorpay from "react-razorpay";
+
 const Payment = () => {
   const Razorpay = useRazorpay();
   const [totalAmount, settotalAmount] = useState("");
@@ -23,9 +24,8 @@ const Payment = () => {
   const toast = useToast();
   const navigate = useNavigate();
 
-
   const handleAmount = async (rupess) => {
-    const { data } = await axios.post("https://medimed-backend.up.railway.app/order", {
+    const { data } = await axios.post("http://localhost:8080/order", {
       amount: rupess,
     });
 
@@ -72,20 +72,13 @@ const Payment = () => {
   const [flag, setFlag] = useState(false);
   const [check, setCheck] = useState(false);
 
-  let DiscountPrice = JSON.parse(localStorage.getItem("DiscountPrice")) || "";
+
 
   useEffect(() => {
     settotalAmount(total);
     setdiscountAmount(discount);
   }, [discount, price, total]);
 
-  const handleSuccess = () => {
-    // BasicUsage() ;
-    alert(
-      ">>>> Link has been sent to your Registered Mobile No. <<<<             >>>> Confirm the Payment & Proceed <<<<"
-    );
-    // navigate("/success");
-  };
   return (
     <>
       <Box

@@ -3,152 +3,271 @@ import {
   Button,
   Flex,
   Heading,
-  Image,
   Input,
   Text,
   Center,
   Stack,
   Avatar,
+  useToast,
+  HStack,
+  PinInput,
+  PinInputField,
+  Image,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 
 import { FaFacebookSquare } from "react-icons/fa";
 
 import { useUserAuth } from "./Context";
-import axios from "axios";
-import { v4 } from "uuid";
+const clientid = import.meta.env.VITE_CLIENT_ID;
+
 import { loginAction } from "../../store/MainAuth/AuthActions";
 import { useDispatch, useSelector } from "react-redux";
+
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+
 function LoginRightCompo() {
-  const [loading, setloading] = useState(false);
-  const [useemail, setuseemail] = useState("");
+  const [otp, setotp] = useState("");
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { setupRecaptcha, googleSignIn, logOut, user } = useUserAuth();
+
+  const [phnumber, setphnumber] = useState("+91");
   const navigate = useNavigate();
-  const [formData, setformData] = useState({
-    email: "",
-    password: "",
-    userid: v4(),
-    imageURL:
-      "https://user-images.githubusercontent.com/40628582/202887621-79e9def3-55b5-4afd-b382-2561a6c915bd.jpg",
-  });
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setformData({ ...formData, [name]: value });
-  };
+  const [result, setresult] = useState();
+  const [redisbool, setredisbool] = useState(false);
+  const [loading, setloading] = useState(false);
   const dispatch = useDispatch();
-
-  const postUser = async () => {
-    const { email, password } = formData;
-    if (!email && !password) {
-      alert("please enter all the required fields");
-    }
+  const toast = useToast();
+  const getOtp = async () => {
+    setloading(true);
     try {
-      const res = await axios.post(
-        "https://medimed-backend.up.railway.app/loginuser",
-        {
-          email: email,
-          password: password,
-        }
-      );
-      const {
-        data: { userid },
-      } = res;
-
-      localStorage.setItem("email", userid);
-      setuseemail(userid);
-    } catch (e) {
-      console.log(e);
-      alert(`user not found please enter valid email`);
+      const res = await setupRecaptcha(phnumber);
+      setresult(res);
+      setphnumber("");
+      setloading(false);
+    } catch (error) {
+      alert(error.message);
     }
-  };
-  const handleSubmit = () => {
-    postUser();
-    navigate("/");
   };
 
   useEffect(() => {
     dispatch(loginAction());
-  }, [formData, useemail]);
+  }, [redisbool]);
+
+  const verifyOtp = async () => {
+    setloading(true);
+
+    try {
+      let data = await result.confirm(otp);
+      const {
+        user: { phoneNumber },
+      } = data;
+
+      let res = await axios.post(
+        "http://localhost:8080/auth/getViaPhonenumber",
+        {
+          phnumber: phoneNumber,
+        }
+      );
+      if (res.status === 200) {
+        onClose();
+        setloading(false);
+        const {
+          data: { email },
+        } = res;
+        localStorage.setItem("lol", email);
+        setredisbool(!redisbool);
+        dispatch(loginAction());
+        toast({
+          title: "Login successfull",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+        navigate("/");
+      }
+    } catch (error) {
+      toast({
+        title: `Wrong OTP`,
+        description: "If you dont have an account please proceed to Sign up",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      onClose();
+      setloading(false);
+    }
+  };
+
+  const onSuccess = async (res) => {
+    console.log("res:", res);
+    // const { displayName, email, photoUrl } = res.profileObj
+    // const [firstName, lastName] = displayName.trim().split(" ");
+    // try {
+    //   const res = await axios.post("http://localhost:8080/auth/google", {
+    //     firstName: firstName,
+    //     lastName: lastName,
+    //     email: email,
+    //     imageURL: photoUrl,
+    //   });
+
+    //   localStorage.setItem("lol", email);
+    //   toast({
+    //     title: "Login successfull",
+    //     status: "success",
+    //     duration: 3000,
+    //     isClosable: true,
+    //   });
+    //   dispatch(loginAction());
+    //   navigate("/");
+    // } catch (error) {
+    //   toast({
+    //     title: `${error.message}`,
+    //     status: "error",
+    //     duration: 3000,
+    //     isClosable: true,
+    //   });
+    // }
+  };
+  // const handleGoogleSignIn = async () => {
+  //   await googleSignIn();
+  //   await onSuccess();
+  // };
+
+  
+
+  const onsubmit = () => {
+    getOtp().then(() => onOpen());
+  };
   return (
-    <Box w={["300", "420px", "490px", "520px"]}>
-      <Flex
-        direction={"column"}
-        align="start"
-        p={["2", "5", "6", "8"]}
-        gap={"3"}
-      >
-        <Heading size={"md"}>Sign In/Sign Up</Heading>
-        <Text align={"start"}>
-          Sign up or Sign in to access your, special offers health tips and more{" "}
-        </Text>
-        <Text fontSize={"sm"} align={"start"}>
-          EMAIL ID{" "}
-        </Text>
-        <Input
-          type={"text"}
-          name={"email"}
-          onChange={handleChange}
-          placeholder="Enter your Email Id"
-        ></Input>
-        <Input
-          type={"text"}
-          name={"password"}
-          onChange={handleChange}
-          placeholder="Enter your password"
-        ></Input>
-        <Button
-          color={"white"}
-          size={"lg"}
-          width={"100%"}
-          isLoading={loading ? true : false}
-          bg={"#24AEB1"}
-          onClick={handleSubmit}
+    <>
+      <Box w={["300", "420px", "490px", "520px"]}>
+        <Flex
+          direction={"column"}
+          align="start"
+          p={["2", "5", "6", "8"]}
+          gap={"4"}
         >
-          Login
-        </Button>
-        <Flex>
-          <Text onClick={() => navigate("/signup")} color={"red"}>
-            Dont have an account?
+          <Heading size={"md"}>Login</Heading>
+          <Text align={"start"}>
+            Sign up or Sign in to access your, special offers health tips and
+            more{" "}
           </Text>
-          <Text color={"red "} onClick={() => navigate("/signup")}>
-            Signup
+
+          <Text fontSize={"sm"} fontWeight={"bold"}>
+            PHONE NUMBER
           </Text>
-        </Flex>
+          {/* <InputGroup>
+              <InputLeftAddon children='+91' defaultValue={"+91"} />
+          <Input type={"text"} onChange={(e) => setphnumber(e.target.value)} value={phnumber} placeholder="Enter your mobile no" />
+          </InputGroup> */}
+          <Input
+            type={"text"}
+            onChange={(e) => setphnumber(e.target.value)}
+            value={phnumber}
+            placeholder="Enter your mobile no"
+          />
 
-        <Flex gap={"20"} width={"100%"} justify={"space-between"}>
+          <div id="recaptcha-container" />
           <Button
-            size={"md"}
-            bg={"white"}
-            border={"1px solid grey"}
-            w={"50%"}
-            color={"#767676"}
-            fontWeight={"bold"}
+            color={"white"}
+            size={"lg"}
+            width={"100%"}
+            isLoading={loading ? true : false}
+            bg={"#24AEB1"}
+            onClick={onsubmit}
           >
-            <Image
-              mr={"2.5"}
-              h={"6"}
-              src="https://i.ibb.co/yPYCXhz/googel.png"
-            ></Image>{" "}
-            Google
+            GET OTP
           </Button>
+          <Center w={"100%"} fontWeight={"medium"}>
+            <Text align={"center"}>
+              Dont have an Account?{" "}
+              <span style={{ color: "blue" }}>
+                <Link to={"/signup"}> Create an Account</Link>
+              </span>
+            </Text>
+          </Center>
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Modal Title</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                <Text fontSize={"sm"}>VERIFYING NUMBER</Text>
+                <Text>{`We have sent 6 digit OTP on ${phnumber}`}</Text>
+                <HStack gap={[2, 3, 5, 6]}>
+                  <PinInput otp size={"lg"} placeholder={"."} onChange={setotp}>
+                    <PinInputField />
+                    <PinInputField />
+                    <PinInputField />
+                    <PinInputField />
+                    <PinInputField />
+                    <PinInputField />
+                  </PinInput>
+                </HStack>
+              </ModalBody>
 
-          <Button
-            size={"md"}
-            // onClick={handleGoogleSignIn}
-            bg={"white"}
-            border={"1px solid gray"}
-            w={"50%"}
-            color={"#767676"}
-            fontWeight={"bold"}
-          >
-            <Flex gap={"2"}>
-              <FaFacebookSquare size={"20"} color={"darkblue"} />
-              <Text>Facebook</Text>
-            </Flex>
-          </Button>
+              <ModalFooter>
+                <Button colorScheme="blue" mr={3} onClick={onClose}>
+                  Close
+                </Button>
+                <Button
+                  color={"white"}
+                  size={"lg"}
+                  width={"100%"}
+                  isLoading={loading ? true : false}
+                  bg={"#24AEB1"}
+                  onClick={() => verifyOtp()}
+                >
+                  Verify
+                </Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+          <Flex gap={"20"} width={"100%"} justify={"space-between"}>
+            <Button
+              // onClick={handleGoogleSignIn}
+              size={"md"}
+              bg={"white"}
+              border={"1px solid grey"}
+              w={"50%"}
+              color={"#767676"}
+              fontWeight={"bold"}
+            >
+              <Image
+                mr={"2.5"}
+                h={"6"}
+                src="https://i.ibb.co/yPYCXhz/googel.png"
+              ></Image>
+              <Text>Login</Text>
+            </Button>
+
+            <Button
+              size={"md"}
+              bg={"white"}
+              border={"1px solid gray"}
+              w={"50%"}
+              color={"#767676"}
+              fontWeight={"bold"}
+            >
+              <Flex gap={"2"}>
+                <FaFacebookSquare size={"20"} color={"darkblue"} />
+                <Text>Facebook</Text>
+              </Flex>
+            </Button>
+          </Flex>
         </Flex>
-      </Flex>
-    </Box>
+      </Box>
+    </>
   );
 }
 

@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import { AuthReducer } from "./MainAuth/AuthReducer";
 import { PaymentState } from "./paymentDetails/PaymentReduces";
 const rootReducer = combineReducers({
-    auth: AuthReducer,
-    paymentState:PaymentState
-})
-export const store = legacy_createStore(rootReducer, applyMiddleware(thunk))
+  auth: AuthReducer,
+  paymentState: PaymentState,
+});
+export const store = legacy_createStore(rootReducer, applyMiddleware(thunk));

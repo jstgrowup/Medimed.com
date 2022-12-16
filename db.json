@@ -1,504 +1,496 @@
 {
-   "categoryArr": [
-      "COVID Essentials",
-      "Diabetes",
-      "Eyewear",
-      "Ayush",
-      "Ayurveda",
-      "Homeopathy",
-      "Fitness",
-      "Mom & Baby",
-      "Devices",
-      "Surgical",
-      "Sexual Wellness",
-      "Treatments"
-   ],
-   "dealArr": [
-      {
-         "id": 1,
-         "img": "https://raw.githubusercontent.com/iammostak/adhesive-legs-8944/2d3100a8c566459a2318b125206669e5ae3ee42b/src/assets/images/icons/Wellnessnew.svg",
-         "heading": "Order Medicine",
-         "deal": "Save Upto 25% off"
-      },
-      {
-         "id": 2,
-         "img": "https://raw.githubusercontent.com/iammostak/adhesive-legs-8944/2d3100a8c566459a2318b125206669e5ae3ee42b/src/assets/images/icons/Beautynew.svg",
-         "heading": "Beauty",
-         "deal": "Save Upto 40% off"
-      },
-      {
-         "id": 3,
-         "img": "https://raw.githubusercontent.com/iammostak/adhesive-legs-8944/2d3100a8c566459a2318b125206669e5ae3ee42b/src/assets/images/icons/ordermedicinnew.svg",
-         "heading": "Wellness",
-         "deal": "Upto 80% off"
-      }
-   ],
-   "slides": [
-      {
-         "id": 1,
-         "img": "https://raw.githubusercontent.com/iammostak/adhesive-legs-8944/2d3100a8c566459a2318b125206669e5ae3ee42b/src/assets/images/carousel/Home_Bannernmsnew.jpg"
-      },
-      {
-         "id": 2,
-         "img": "https://raw.githubusercontent.com/iammostak/adhesive-legs-8944/2d3100a8c566459a2318b125206669e5ae3ee42b/src/assets/images/carousel/Home_Bannernms20.jpg"
-      },
-      {
-         "id": 3,
-         "img": "https://raw.githubusercontent.com/iammostak/adhesive-legs-8944/2d3100a8c566459a2318b125206669e5ae3ee42b/src/assets/images/carousel/Home_Bannercabbb.jpg"
-      },
-      {
-         "id": 4,
-         "img": "https://raw.githubusercontent.com/iammostak/adhesive-legs-8944/2d3100a8c566459a2318b125206669e5ae3ee42b/src/assets/images/carousel/Home_Banner_Keerthivdv.jpg"
-      },
-      {
-         "id": 5,
-         "img": "https://raw.githubusercontent.com/iammostak/adhesive-legs-8944/2d3100a8c566459a2318b125206669e5ae3ee42b/src/assets/images/carousel/Home_Bannercold.jpg"
-      },
-      {
-         "id": 6,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1667577730_Home_Bannerfdsf.jpg"
-      }
-   ],
-   "offerArr": [
-      {
-         "id": 1,
-         "img": "https://www.netmeds.com/images/cms/offers/1657030565_Simpl_Icon.png",
-         "heading": "Get up to Rs. 1000 Simpl Cashback* (5%)!..",
-         "description": "Get up to Rs. 1000 Simpl Cashback* (5%) on your FIRST-EVER payment via Simpl for ANY purchase* of AN.."
-      },
-      {
-         "id": 2,
-         "img": "https://www.netmeds.com/images/cms/offers/1654235738_Icon_256x256.png",
-         "heading": "Use Pay with Rewards, Get max. Rs. 1000 Cashback!..",
-         "description": "Get assured cashback of max. Rs. 1000, when you pay using the “Pay with Rewards” payment option .."
-      }
-   ],
-   "healthLibraryArr": [
-      {
-         "id": 1,
-         "img": "https://www.netmeds.com/images/cms/magefan_blog/nmslite/1668076367_Potatoes_480x180.jpg",
-         "description": "Potatoes: Health Benefits, Nutrition and Uses. Rea.."
-      },
-      {
-         "id": 2,
-         "img": "https://www.netmeds.com/images/cms/magefan_blog/nmslite/1668075987_Makeup-Removal_480x180.jpg",
-         "description": "How To Remove Makeup Completely? 5 Common Mistakes.."
-      },
-      {
-         "id": 3,
-         "img": "https://www.netmeds.com/images/cms/magefan_blog/nmslite/1668075509_Pityriasis_480x180.jpg",
-         "description": "Pityriasis Rosea: Causes, Symptoms And Treatment.."
-      },
-      {
-         "id": 4,
-         "img": "https://www.netmeds.com/images/cms/magefan_blog/nmslite/1667984179_Indian-Diet-Chart_480x180.jpg",
-         "description": "How To Lose Weight? This Is What You Should Eat An.."
-      }
-   ],
-   "extraInfo": [
-      {
-         "id": 1,
-         "title": "Popular Wellness Products:",
-         "description": "Dabur Shilajit Gold Capsule 20's | Dabur Chyawanprash Awaleha 500 gm | Pankajakasthuri Breathe Easy Granules 400 gm | Nestle Peptamen Peptide Based Diet Powder - Vanilla Flavour 400 gm (Tin) | Pentasure 2.0 Vanilla Powder 1 kg | Scalpe Plus Anti Dandruff Shampoo 75 ml | Nestle Nan Excella Pro 1 (Upto 6 Months) Powder 400 gm (Refill Pack) | Accu-Chek Active Test Strips 50's | D Protin Chocolate Powder 500 gm | Climax Spray for Men 12 gm"
-      },
-      {
-         "id": 2,
-         "title": "Top-Selling Health Packages:",
-         "description": "AAROGYAM C | Netmed Health Pack | Aarogyam 1.3 | Netmeds Swasthya | Diabetic Checkup | Aarogyam 1.7 | Basic Allergy Package | Aarogyam X | Advance Heart Care | Netmeds Swasthya Plus"
-      },
-      {
-         "id": 3,
-         "title": "Top-Selling Lab Tests:",
-         "description": "Complete Blood Count (CBC)/Complete Hemogram | LIVER FUNCTION TEST | Blood Glucose Fasting (FBS) | THYROID PROFILE -TOTAL(T3,T4&TSH) | Fever Profile | Urine Routine & Microscopy | Hemoglobin A1C (HbA1c) | 25-OH Vitamin D (TOTAL)/Vitamin D Total 25 Hydroxy | Uric Acid | Maternal screen-1st Trimester Dual Marker test"
-      },
-      {
-         "id": 4,
-         "title": "Top-Selling Radiology Tests:",
-         "description": "Ultrasound Whole Abdomen | MRI Scan Brain | CT Scan Brain | ECHO | X Ray Chest PA View | PET Scan | ECG | Ultrasound Pelvis | 3T MRI Scan Brain | CT Scan Chest"
-      },
-      {
-         "id": 5,
-         "title": "Most Viewed Health Articles:",
-         "description": "Chandraprabha Vati - Uses, Functions And Therapeutic Benefits | Amla: Benefits, Uses For Hair and Health Conditions, Supplements And Recipes | Amazing Benefits Of Chyawanprash For Bolstering Immunity And Vitality | Arogyavardhini Vati - Uses, Functions And Therapeutic Benefits | Amazing Benefits Of Betel Leaves Nobody Told You"
-      }
-   ],
-   "exploreBeautyArr": [
-      {
-         "id": 1,
-         "img": "https://www.netmeds.com/images/category/3505/thumb/facial_kits_1.jpg",
-         "title": "Facial Kits"
-      },
-      {
-         "id": 2,
-         "img": "https://www.netmeds.com/images/category/v1/560/thumb/lip_care_2.jpg",
-         "title": "Lip Care"
-      },
-      {
-         "id": 3,
-         "img": "https://www.netmeds.com/images/category/v1/525/thumb/body_care_1.jpg",
-         "title": "Body Care"
-      },
-      {
-         "id": 4,
-         "img": "https://www.netmeds.com/images/category/v1/547/thumb/hair_care_2.jpg",
-         "title": "Hair Care"
-      },
-      {
-         "id": 5,
-         "img": "https://www.netmeds.com/images/category/v1/3784/thumb/skin_care_1.jpg",
-         "title": "Skin Care"
-      }
-   ],
-   "healthConcernsArr": [
-      {
-         "id": 1,
-         "img": "https://www.netmeds.com/images/cms/wysiwyg/category/v2/img/lung-care.jpg?v=1",
-         "title": "Lung Care"
-      },
-      {
-         "id": 2,
-         "img": "https://www.netmeds.com/images/cms/wysiwyg/category/v2/img/weight-care.jpg?v=1",
-         "title": "Weight Care"
-      },
-      {
-         "id": 3,
-         "img": "https://www.netmeds.com/images/cms/wysiwyg/category/v2/img/women-s-care.jpg?v=1",
-         "title": "Women's Care"
-      },
-      {
-         "id": 4,
-         "img": "https://www.netmeds.com/images/cms/wysiwyg/category/v2/img/bone-and-joint-pain.jpg?v=1",
-         "title": "Bone & Joint Pain"
-      },
-      {
-         "id": 5,
-         "img": "https://www.netmeds.com/images/cms/wysiwyg/category/v2/img/cold-and-fever.jpg?v=1",
-         "title": "Cold and Fever"
-      }
-   ],
-   "newOnMedimedArr": [
-      {
-         "id": 1,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1666859388_Mini-banner_web.jpg"
-      },
-      {
-         "id": 2,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1667589313_anuja_-mini-banner-for-web.jpg"
-      },
-      {
-         "id": 3,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1666957013_Naturrel_mini_web.jpg"
-      },
-      {
-         "id": 4,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668193499_Becton-Dickinson_web.jpg"
-      },
-      {
-         "id": 5,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668194889_Core_pure_web.jpg"
-      },
-      {
-         "id": 6,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1661452980_La-Americana_web.jpg"
-      },
-      {
-         "id": 7,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1666381937_Nutrabay_mini_web.jpg"
-      },
-      {
-         "id": 8,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668193933_Pigeon_web.jpg"
-      },
-      {
-         "id": 9,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668194078_Tulips_web.jpg"
-      },
-      {
-         "id": 10,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668194395_Velfix_web.jpg"
-      },
-      {
-         "id": 11,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668194549_Vilvah_web.jpg"
-      },
-      {
-         "id": 12,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1662551339_Dynamic_Mini_banner_web_m30.jpg"
-      }
-   ],
-   "topBrandArr": [
-      {
-         "id": 1,
-         "img": "https://www.netmeds.com/images/product-v1/150x150/405495/himalaya_purifying_neem_face_wash_200_ml_0_2.jpg",
-         "brand": "Himalaya",
-         "deal": "Up to 35% off"
-      },
-      {
-         "id": 2,
-         "img": "https://www.netmeds.com/images/product-v1/150x150/15577/accu_chek_active_glucose_monitor_with_free_10_test_strips_0_3.jpg",
-         "brand": "Accu-Chek",
-         "deal": "Up to 25% off"
-      },
-      {
-         "id": 3,
-         "img": "https://www.netmeds.com/images/product-v1/150x150/840553/dabur_honey_250_gm_0_2.jpg",
-         "brand": "Dabur",
-         "deal": "Up to 30% off"
-      },
-      {
-         "id": 4,
-         "img": "https://www.netmeds.com/images/product-v1/150x150/958247/cetaphil_baby_daily_with_organic_calendula_lotion_400ml_205797_0_1.jpg",
-         "brand": "Cetaphil",
-         "deal": "Up to 10% off"
-      },
-      {
-         "id": 5,
-         "img": "https://www.netmeds.com/images/product-v1/150x150/1059313/revital_h_men_capsules_30s_free_revital_h_women_capsules_4s_461966_0_0.jpg",
-         "brand": "Revital",
-         "deal": "Up to 15% off"
-      }
-   ],
-   "focusArr": [
-      {
-         "id": 1,
-         "img": "https://www.netmeds.com/images/category/3087/thumb/feminine_hygiene_1.jpg",
-         "brand": "Feminine Hygiene",
-         "deal": "UP TO 50% OFF"
-      },
-      {
-         "id": 2,
-         "img": "https://www.netmeds.com/images/category/v1/525/thumb/body_care_1.jpg",
-         "brand": "Body Care",
-         "deal": "UP TO 60% OFF"
-      },
-      {
-         "id": 3,
-         "img": "https://www.netmeds.com/images/category/676/thumb/orthopaedics_1.jpg",
-         "brand": "Orthopaedics",
-         "deal": "UP TO 83% OFF"
-      },
-      {
-         "id": 4,
-         "img": "https://www.netmeds.com/images/category/3216/thumb/sports_supplements_1.jpg",
-         "brand": "Sports Supplements",
-         "deal": "UP TO 60% OFF"
-      },
-      {
-         "id": 5,
-         "img": "https://www.netmeds.com/images/category/3061/thumb/immunity_booster_1.jpg",
-         "brand": "Immunity Booster",
-         "deal": "UP TO 82% OFF"
-      }
-   ],
-   "trendingTodayArr": [
-      {
-         "id": 1,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1667462507_Web_Home_Page_Mini_Banner-436X224__.png"
-      },
-      {
-         "id": 2,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668194157_Mini-banner_web.jpg"
-      },
-      {
-         "id": 3,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668189701_Mini-banner_web.jpg"
-      },
-      {
-         "id": 4,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1667806581_Breath-Easy_wellness_Mobile.jpg"
-      },
-      {
-         "id": 5,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1666259889_Truuth_web.jpg"
-      },
-      {
-         "id": 6,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668186838_Merlion_mini_web.jpg"
-      },
-      {
-         "id": 7,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668186994_Secret-Temptation_Mobile_Home_1.jpg"
-      },
-      {
-         "id": 8,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668187098_Kapiva_Mobile_home.jpg"
-      },
-      {
-         "id": 9,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668187211_Emami_Mini_banner_web.jpg"
-      },
-      {
-         "id": 10,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668187312_Baidyanath_Mini_banner_web.jpg"
-      },
-      {
-         "id": 11,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668187540_Axiom_Mini_banner_web.jpg"
-      },
-      {
-         "id": 12,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668188017_Curae-Health_web_1.jpg"
-      },
-      {
-         "id": 13,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668188188_Healthvit_mini_web.jpg"
-      },
-      {
-         "id": 14,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668188399_R-for-rabbit_Mobile.jpg"
-      },
-      {
-         "id": 15,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1662550980_Beurer_Mini_banner_web_m45.jpg"
-      },
-      {
-         "id": 16,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1662551339_Dynamic_Mini_banner_web_m30.jpg"
-      },
-      {
-         "id": 17,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1665774280_Climax_Mobile_Home.jpg"
-      },
-      {
-         "id": 18,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1662570473_Maxirich_Mini_banner_web_m45.jpg"
-      },
-      {
-         "id": 19,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1662571022_moov_Mini_banner_web_m20.jpg"
-      },
-      {
-         "id": 20,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668189234_nixit_Mini_banner_web_m24.jpg"
-      },
-      {
-         "id": 21,
-         "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1660911310_Beato_Mini_banner_web.jpg"
-      }
-   ],
-   "shopByCategoryArr": [
-      {
-         "id": 1,
-         "img": "https://www.netmeds.com/images/category/3107/thumb/dressing_1.jpg",
-         "title": "Dressing"
-      },
-      {
-         "id": 2,
-         "img": "https://www.netmeds.com/images/category/501/thumb/family_nutrition_1.jpg",
-         "title": "Family Nutrition"
-      },
-      {
-         "id": 3,
-         "img": "https://www.netmeds.com/images/category/3141/thumb/respiratory_supplies_1.jpg",
-         "title": "Respiratory Supplies"
-      },
-      {
-         "id": 4,
-         "img": "https://www.netmeds.com/images/category/3758/thumb/lotions_creams_0.jpg",
-         "title": "Lotions & Creams"
-      },
-      {
-         "id": 5,
-         "img": "https://www.netmeds.com/images/category/v1/491/thumb/homeopathy_2.jpg",
-         "title": "Homeopathy"
-      }
-   ],
-   "popularCategoryArr": [
-      {
-         "id": 1,
-         "img": "https://www.netmeds.com/images/category/v1/3902/thumb/face_personal_care.jpg",
-         "title": "Face Personal care"
-      },
-      {
-         "id": 2,
-         "img": "https://www.netmeds.com/images/category/v1/525/thumb/body_care_1.jpg",
-         "title": "Body care"
-      },
-      {
-         "id": 3,
-         "img": "https://www.netmeds.com/images/category/v1/547/thumb/hair_care_2.jpg",
-         "title": "Hair care"
-      },
-      {
-         "id": 4,
-         "img": "https://www.netmeds.com/images/category/v1/562/thumb/oral_care.jpg",
-         "title": "Oral Care"
-      },
-      {
-         "id": 5,
-         "img": "https://www.netmeds.com/images/category/v1/3772/thumb/home_health.jpg",
-         "title": "Home & Health"
-      }
-   ],
-   "medicinePopoverArr": [
-      {
-         "id": 1,
-         "title": "All Medicine",
-         "route": "/wellness"
-      },
-      {
-         "id": 2,
-         "title": "Previously Ordered Products",
-         "route": ""
-      }
-   ],
-   "beautyPopoverArr": [
-      {
-         "id": 1,
-         "title": "Personal Care",
-         "route": "/wellness"
-      },
-      {
-         "id": 2,
-         "title": "Make-Up",
-         "route": "/wellness"
-      },
-      {
-         "id": 3,
-         "title": "Hair",
-         "route": "/wellness"
-      },
-      {
-         "id": 4,
-         "title": "Skin Care",
-         "route": "/wellness"
-      },
-      {
-         "id": 5,
-         "title": "Tools & Appliances",
-         "route": ""
-      },
-      {
-         "id": 6,
-         "title": "Mom & Baby",
-         "route": "/wellness"
-      },
-      {
-         "id": 7,
-         "title": "Fragrances",
-         "route": ""
-      },
-      {
-         "id": 8,
-         "title": "Men's Grooming",
-         "route": ""
-      }
-   ],
-   "healthPopoverArr": [
-      {
-         "id": 1,
-         "title": "Health Library",
-         "route": "/wellness"
-      },
-      {
-         "id": 2,
-         "title": "PatientsAlike",
-         "route": ""
-      },
-      {
-         "id": 3,
-         "title": "Cancer Awareness",
-         "route": ""
-      }
-   ]
+  "categoryArr": [
+    "COVID Essentials",
+    "Diabetes",
+    "Eyewear",
+    "Ayush",
+    "Ayurveda",
+    "Homeopathy",
+    "Fitness",
+    "Mom & Baby",
+    "Devices",
+    "Surgical",
+    "Sexual Wellness",
+    "Treatments"
+  ],
+  "dealArr": [
+    {
+      "id": 1,
+      "img": "https://user-images.githubusercontent.com/40628582/208020111-380f1d12-3c48-407a-bdf1-4aa90f8d9f8a.svg",
+      "heading": "Order Medicine",
+      "deal": "Save Upto 25% off"
+    },
+    {
+      "id": 2,
+      "img": "https://user-images.githubusercontent.com/40628582/208020169-93b311d8-6648-4149-bdee-3d45e0aa0d02.svg",
+      "heading": "Beauty",
+      "deal": "Save Upto 40% off"
+    },
+    {
+      "id": 3,
+      "img": "https://user-images.githubusercontent.com/40628582/208020222-206fd223-8dc5-4f6d-98b7-7acf5a9c2c85.svg",
+      "heading": "Wellness",
+      "deal": "Upto 80% off"
+    }
+  ],
+  "slides": [
+    {
+      "id": 1,
+      "img": "https://user-images.githubusercontent.com/40628582/208019413-84857bc3-4c29-4af7-8d34-1a4d112fe1a9.jpg"
+    },
+    {
+      "id": 2,
+      "img": "https://user-images.githubusercontent.com/40628582/208019474-8483160e-a648-416a-b4ad-ebd81824152a.jpg"
+    },
+    {
+      "id": 3,
+      "img": "https://user-images.githubusercontent.com/40628582/208019538-48166c7e-60a3-49ee-80ba-f71e6cb44fad.jpg"
+    },
+    {
+      "id": 4,
+      "img": "https://user-images.githubusercontent.com/40628582/208019598-0faa60eb-fca1-4835-8d25-8a6986e6a0c4.jpg"
+    }
+  ],
+  "offerArr": [
+    {
+      "id": 1,
+      "img": "https://www.netmeds.com/images/cms/offers/1657030565_Simpl_Icon.png",
+      "heading": "Get up to Rs. 1000 Simpl Cashback* (5%)!..",
+      "description": "Get up to Rs. 1000 Simpl Cashback* (5%) on your FIRST-EVER payment via Simpl for ANY purchase* of AN.."
+    },
+    {
+      "id": 2,
+      "img": "https://www.netmeds.com/images/cms/offers/1654235738_Icon_256x256.png",
+      "heading": "Use Pay with Rewards, Get max. Rs. 1000 Cashback!..",
+      "description": "Get assured cashback of max. Rs. 1000, when you pay using the “Pay with Rewards” payment option .."
+    }
+  ],
+  "healthLibraryArr": [
+    {
+      "id": 1,
+      "img": "https://www.netmeds.com/images/cms/magefan_blog/nmslite/1668076367_Potatoes_480x180.jpg",
+      "description": "Potatoes: Health Benefits, Nutrition and Uses. Rea.."
+    },
+    {
+      "id": 2,
+      "img": "https://www.netmeds.com/images/cms/magefan_blog/nmslite/1668075987_Makeup-Removal_480x180.jpg",
+      "description": "How To Remove Makeup Completely? 5 Common Mistakes.."
+    },
+    {
+      "id": 3,
+      "img": "https://www.netmeds.com/images/cms/magefan_blog/nmslite/1668075509_Pityriasis_480x180.jpg",
+      "description": "Pityriasis Rosea: Causes, Symptoms And Treatment.."
+    },
+    {
+      "id": 4,
+      "img": "https://www.netmeds.com/images/cms/magefan_blog/nmslite/1667984179_Indian-Diet-Chart_480x180.jpg",
+      "description": "How To Lose Weight? This Is What You Should Eat An.."
+    }
+  ],
+  "extraInfo": [
+    {
+      "id": 1,
+      "title": "Popular Wellness Products:",
+      "description": "Dabur Shilajit Gold Capsule 20's | Dabur Chyawanprash Awaleha 500 gm | Pankajakasthuri Breathe Easy Granules 400 gm | Nestle Peptamen Peptide Based Diet Powder - Vanilla Flavour 400 gm (Tin) | Pentasure 2.0 Vanilla Powder 1 kg | Scalpe Plus Anti Dandruff Shampoo 75 ml | Nestle Nan Excella Pro 1 (Upto 6 Months) Powder 400 gm (Refill Pack) | Accu-Chek Active Test Strips 50's | D Protin Chocolate Powder 500 gm | Climax Spray for Men 12 gm"
+    },
+    {
+      "id": 2,
+      "title": "Top-Selling Health Packages:",
+      "description": "AAROGYAM C | Netmed Health Pack | Aarogyam 1.3 | Netmeds Swasthya | Diabetic Checkup | Aarogyam 1.7 | Basic Allergy Package | Aarogyam X | Advance Heart Care | Netmeds Swasthya Plus"
+    },
+    {
+      "id": 3,
+      "title": "Top-Selling Lab Tests:",
+      "description": "Complete Blood Count (CBC)/Complete Hemogram | LIVER FUNCTION TEST | Blood Glucose Fasting (FBS) | THYROID PROFILE -TOTAL(T3,T4&TSH) | Fever Profile | Urine Routine & Microscopy | Hemoglobin A1C (HbA1c) | 25-OH Vitamin D (TOTAL)/Vitamin D Total 25 Hydroxy | Uric Acid | Maternal screen-1st Trimester Dual Marker test"
+    },
+    {
+      "id": 4,
+      "title": "Top-Selling Radiology Tests:",
+      "description": "Ultrasound Whole Abdomen | MRI Scan Brain | CT Scan Brain | ECHO | X Ray Chest PA View | PET Scan | ECG | Ultrasound Pelvis | 3T MRI Scan Brain | CT Scan Chest"
+    },
+    {
+      "id": 5,
+      "title": "Most Viewed Health Articles:",
+      "description": "Chandraprabha Vati - Uses, Functions And Therapeutic Benefits | Amla: Benefits, Uses For Hair and Health Conditions, Supplements And Recipes | Amazing Benefits Of Chyawanprash For Bolstering Immunity And Vitality | Arogyavardhini Vati - Uses, Functions And Therapeutic Benefits | Amazing Benefits Of Betel Leaves Nobody Told You"
+    }
+  ],
+  "exploreBeautyArr": [
+    {
+      "id": 1,
+      "img": "https://www.netmeds.com/images/category/3505/thumb/facial_kits_1.jpg",
+      "title": "Facial Kits"
+    },
+    {
+      "id": 2,
+      "img": "https://www.netmeds.com/images/category/v1/560/thumb/lip_care_2.jpg",
+      "title": "Lip Care"
+    },
+    {
+      "id": 3,
+      "img": "https://www.netmeds.com/images/category/v1/525/thumb/body_care_1.jpg",
+      "title": "Body Care"
+    },
+    {
+      "id": 4,
+      "img": "https://www.netmeds.com/images/category/v1/547/thumb/hair_care_2.jpg",
+      "title": "Hair Care"
+    },
+    {
+      "id": 5,
+      "img": "https://www.netmeds.com/images/category/v1/3784/thumb/skin_care_1.jpg",
+      "title": "Skin Care"
+    }
+  ],
+  "healthConcernsArr": [
+    {
+      "id": 1,
+      "img": "https://www.netmeds.com/images/cms/wysiwyg/category/v2/img/lung-care.jpg?v=1",
+      "title": "Lung Care"
+    },
+    {
+      "id": 2,
+      "img": "https://www.netmeds.com/images/cms/wysiwyg/category/v2/img/weight-care.jpg?v=1",
+      "title": "Weight Care"
+    },
+    {
+      "id": 3,
+      "img": "https://www.netmeds.com/images/cms/wysiwyg/category/v2/img/women-s-care.jpg?v=1",
+      "title": "Women's Care"
+    },
+    {
+      "id": 4,
+      "img": "https://www.netmeds.com/images/cms/wysiwyg/category/v2/img/bone-and-joint-pain.jpg?v=1",
+      "title": "Bone & Joint Pain"
+    },
+    {
+      "id": 5,
+      "img": "https://www.netmeds.com/images/cms/wysiwyg/category/v2/img/cold-and-fever.jpg?v=1",
+      "title": "Cold and Fever"
+    }
+  ],
+  "newOnMedimedArr": [
+    {
+      "id": 1,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1666859388_Mini-banner_web.jpg"
+    },
+    {
+      "id": 2,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1667589313_anuja_-mini-banner-for-web.jpg"
+    },
+    {
+      "id": 3,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1666957013_Naturrel_mini_web.jpg"
+    },
+    {
+      "id": 4,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668193499_Becton-Dickinson_web.jpg"
+    },
+    {
+      "id": 5,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668194889_Core_pure_web.jpg"
+    },
+    {
+      "id": 6,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1661452980_La-Americana_web.jpg"
+    },
+    {
+      "id": 7,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1666381937_Nutrabay_mini_web.jpg"
+    },
+    {
+      "id": 8,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668193933_Pigeon_web.jpg"
+    },
+    {
+      "id": 9,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668194078_Tulips_web.jpg"
+    },
+    {
+      "id": 10,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668194395_Velfix_web.jpg"
+    },
+    {
+      "id": 11,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668194549_Vilvah_web.jpg"
+    },
+    {
+      "id": 12,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1662551339_Dynamic_Mini_banner_web_m30.jpg"
+    }
+  ],
+  "topBrandArr": [
+    {
+      "id": 1,
+      "img": "https://www.netmeds.com/images/product-v1/150x150/405495/himalaya_purifying_neem_face_wash_200_ml_0_2.jpg",
+      "brand": "Himalaya",
+      "deal": "Up to 35% off"
+    },
+    {
+      "id": 2,
+      "img": "https://www.netmeds.com/images/product-v1/150x150/15577/accu_chek_active_glucose_monitor_with_free_10_test_strips_0_3.jpg",
+      "brand": "Accu-Chek",
+      "deal": "Up to 25% off"
+    },
+    {
+      "id": 3,
+      "img": "https://www.netmeds.com/images/product-v1/150x150/840553/dabur_honey_250_gm_0_2.jpg",
+      "brand": "Dabur",
+      "deal": "Up to 30% off"
+    },
+    {
+      "id": 4,
+      "img": "https://www.netmeds.com/images/product-v1/150x150/958247/cetaphil_baby_daily_with_organic_calendula_lotion_400ml_205797_0_1.jpg",
+      "brand": "Cetaphil",
+      "deal": "Up to 10% off"
+    },
+    {
+      "id": 5,
+      "img": "https://www.netmeds.com/images/product-v1/150x150/1059313/revital_h_men_capsules_30s_free_revital_h_women_capsules_4s_461966_0_0.jpg",
+      "brand": "Revital",
+      "deal": "Up to 15% off"
+    }
+  ],
+  "focusArr": [
+    {
+      "id": 1,
+      "img": "https://www.netmeds.com/images/category/3087/thumb/feminine_hygiene_1.jpg",
+      "brand": "Feminine Hygiene",
+      "deal": "UP TO 50% OFF"
+    },
+    {
+      "id": 2,
+      "img": "https://www.netmeds.com/images/category/v1/525/thumb/body_care_1.jpg",
+      "brand": "Body Care",
+      "deal": "UP TO 60% OFF"
+    },
+    {
+      "id": 3,
+      "img": "https://www.netmeds.com/images/category/676/thumb/orthopaedics_1.jpg",
+      "brand": "Orthopaedics",
+      "deal": "UP TO 83% OFF"
+    },
+    {
+      "id": 4,
+      "img": "https://www.netmeds.com/images/category/3216/thumb/sports_supplements_1.jpg",
+      "brand": "Sports Supplements",
+      "deal": "UP TO 60% OFF"
+    },
+    {
+      "id": 5,
+      "img": "https://www.netmeds.com/images/category/3061/thumb/immunity_booster_1.jpg",
+      "brand": "Immunity Booster",
+      "deal": "UP TO 82% OFF"
+    }
+  ],
+  "trendingTodayArr": [
+    {
+      "id": 1,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1667462507_Web_Home_Page_Mini_Banner-436X224__.png"
+    },
+    {
+      "id": 2,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668194157_Mini-banner_web.jpg"
+    },
+    {
+      "id": 3,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668189701_Mini-banner_web.jpg"
+    },
+    {
+      "id": 4,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1667806581_Breath-Easy_wellness_Mobile.jpg"
+    },
+    {
+      "id": 5,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1666259889_Truuth_web.jpg"
+    },
+    {
+      "id": 6,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668186838_Merlion_mini_web.jpg"
+    },
+    {
+      "id": 7,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668186994_Secret-Temptation_Mobile_Home_1.jpg"
+    },
+    {
+      "id": 8,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668187098_Kapiva_Mobile_home.jpg"
+    },
+    {
+      "id": 9,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668187211_Emami_Mini_banner_web.jpg"
+    },
+    {
+      "id": 10,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668187312_Baidyanath_Mini_banner_web.jpg"
+    },
+    {
+      "id": 11,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668187540_Axiom_Mini_banner_web.jpg"
+    },
+    {
+      "id": 12,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668188017_Curae-Health_web_1.jpg"
+    },
+    {
+      "id": 13,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668188188_Healthvit_mini_web.jpg"
+    },
+    {
+      "id": 14,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668188399_R-for-rabbit_Mobile.jpg"
+    },
+    {
+      "id": 15,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1662550980_Beurer_Mini_banner_web_m45.jpg"
+    },
+    {
+      "id": 16,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1662551339_Dynamic_Mini_banner_web_m30.jpg"
+    },
+    {
+      "id": 17,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1665774280_Climax_Mobile_Home.jpg"
+    },
+    {
+      "id": 18,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1662570473_Maxirich_Mini_banner_web_m45.jpg"
+    },
+    {
+      "id": 19,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1662571022_moov_Mini_banner_web_m20.jpg"
+    },
+    {
+      "id": 20,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1668189234_nixit_Mini_banner_web_m24.jpg"
+    },
+    {
+      "id": 21,
+      "img": "https://www.netmeds.com/images/cms/aw_rbslider/slides/1660911310_Beato_Mini_banner_web.jpg"
+    }
+  ],
+  "shopByCategoryArr": [
+    {
+      "id": 1,
+      "img": "https://www.netmeds.com/images/category/3107/thumb/dressing_1.jpg",
+      "title": "Dressing"
+    },
+    {
+      "id": 2,
+      "img": "https://www.netmeds.com/images/category/501/thumb/family_nutrition_1.jpg",
+      "title": "Family Nutrition"
+    },
+    {
+      "id": 3,
+      "img": "https://www.netmeds.com/images/category/3141/thumb/respiratory_supplies_1.jpg",
+      "title": "Respiratory Supplies"
+    },
+    {
+      "id": 4,
+      "img": "https://www.netmeds.com/images/category/3758/thumb/lotions_creams_0.jpg",
+      "title": "Lotions & Creams"
+    },
+    {
+      "id": 5,
+      "img": "https://www.netmeds.com/images/category/v1/491/thumb/homeopathy_2.jpg",
+      "title": "Homeopathy"
+    }
+  ],
+  "popularCategoryArr": [
+    {
+      "id": 1,
+      "img": "https://www.netmeds.com/images/category/v1/3902/thumb/face_personal_care.jpg",
+      "title": "Face Personal care"
+    },
+    {
+      "id": 2,
+      "img": "https://www.netmeds.com/images/category/v1/525/thumb/body_care_1.jpg",
+      "title": "Body care"
+    },
+    {
+      "id": 3,
+      "img": "https://www.netmeds.com/images/category/v1/547/thumb/hair_care_2.jpg",
+      "title": "Hair care"
+    },
+    {
+      "id": 4,
+      "img": "https://www.netmeds.com/images/category/v1/562/thumb/oral_care.jpg",
+      "title": "Oral Care"
+    },
+    {
+      "id": 5,
+      "img": "https://www.netmeds.com/images/category/v1/3772/thumb/home_health.jpg",
+      "title": "Home & Health"
+    }
+  ],
+  "medicinePopoverArr": [
+    {
+      "id": 1,
+      "title": "All Medicine",
+      "route": "/wellness"
+    },
+    {
+      "id": 2,
+      "title": "Previously Ordered Products",
+      "route": ""
+    }
+  ],
+  "beautyPopoverArr": [
+    {
+      "id": 1,
+      "title": "Personal Care",
+      "route": "/wellness"
+    },
+    {
+      "id": 2,
+      "title": "Make-Up",
+      "route": "/wellness"
+    },
+    {
+      "id": 3,
+      "title": "Hair",
+      "route": "/wellness"
+    },
+    {
+      "id": 4,
+      "title": "Skin Care",
+      "route": "/wellness"
+    },
+    {
+      "id": 5,
+      "title": "Tools & Appliances",
+      "route": ""
+    },
+    {
+      "id": 6,
+      "title": "Mom & Baby",
+      "route": "/wellness"
+    },
+    {
+      "id": 7,
+      "title": "Fragrances",
+      "route": ""
+    },
+    {
+      "id": 8,
+      "title": "Men's Grooming",
+      "route": ""
+    }
+  ],
+  "healthPopoverArr": [
+    {
+      "id": 1,
+      "title": "Health Library",
+      "route": "/wellness"
+    },
+    {
+      "id": 2,
+      "title": "PatientsAlike",
+      "route": ""
+    },
+    {
+      "id": 3,
+      "title": "Cancer Awareness",
+      "route": ""
+    }
+  ]
 }

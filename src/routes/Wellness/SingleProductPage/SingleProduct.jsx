@@ -24,12 +24,10 @@ import MobileView from "./mobileScreen";
 import Rating from "./rating/Rating";
 import ReviewModal from "./reviewModal";
 const mainColor = "rgb(50,174,177)";
-
+// https://medimedcom-backend-production.up.railway.app/
 const getData = async (id) => {
-  let d = await axios.get(
-    `https://medimed-backend.up.railway.app/products/single/${id}`
-  );
- 
+  let d = await axios.get(`http://localhost:8080/products/single/${id}`);
+  // let d=await axios.get(`https://netmeds-new-api.herokuapp.com/products/${id}`)
 
   return d;
 };
@@ -49,7 +47,7 @@ export default function SingleProduct() {
     success: false,
   });
   const toast = useToast();
-  
+
   // Add a request interceptor
   axios.interceptors.request.use(
     function (config) {
@@ -87,12 +85,9 @@ export default function SingleProduct() {
       success: false,
     });
     try {
-      let d = await axios.post(
-        "https://medimed-backend.up.railway.app/carts/create",
-        {
-          productId: id,
-        }
-      );
+      let d = await axios.post("http://localhost:8080/carts/create", {
+        productId: id,
+      });
       // console.log(d)
       cartBtnSetState({
         ...cartBtnState,

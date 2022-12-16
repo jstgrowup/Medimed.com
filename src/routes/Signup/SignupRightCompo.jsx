@@ -18,120 +18,75 @@ import {
   ModalCloseButton,
   useDisclosure,
   useToast,
+  Center,
 } from "@chakra-ui/react";
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { v4 } from "uuid";
+// import { v4 } from "uuid";
 import { loginAction } from "../../store/MainAuth/AuthActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useUserAuth } from "../Login/Context";
-import { useNavigate } from "react-router-dom";
-import PhoneInput from "react-phone-number-input";
+import { Link, useNavigate } from "react-router-dom";
+
 
 function SignupRightCompo() {
   const toast = useToast();
-  const [spinner, setspinner] = useState(false);
-  const { setupRecaptcha } = useUserAuth();
-  const [phnumber, setphnumber] = useState("+91");
-  const [otp, setotp] = useState("");
   const [useemail, setuseemail] = useState("");
   const dispatch = useDispatch();
-  const [result, setresult] = useState();
   const navigate = useNavigate();
+  const [response, setresponse] = useState();
   const [formData, setformData] = useState({
     email: "",
     firstName: "",
     lastName: "",
-    password: "",
-    userid: v4(),
+    phnumber: "",
     imageURL:
-      "https://user-images.githubusercontent.com/40628582/202887621-79e9def3-55b5-4afd-b382-2561a6c915bd.jpg",
+      "https://user-images.githubusercontent.com/40628582/201342233-58862907-4a5e-41a8-9245-ee99734dd4e2.png",
   });
+
+  useEffect(() => {
+    dispatch(loginAction());
+  }, [useemail]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setformData({ ...formData, [name]: value });
   };
   const postUser = async () => {
-    const { email, firstName, lastName } = formData;
-    if (!email || !firstName || !lastName) {
-      alert("please enter all the required fields");
+    const { email, firstName, lastName, phnumber } = formData;
+    if (!email || !firstName || !lastName || !phnumber) {
+      toast({
+        title: `Please fill all the credentials`,
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+      });
     }
     try {
       const res = await axios.post(
-        "https://medimed-backend.up.railway.app/postUserViaForm",
+        "http://localhost:8080/auth/postUserViaForm",
         formData
       );
-      const {
-        data: { userid },
-      } = res;
-      localStorage.setItem("email", userid);
-      setuseemail(userid);
-    } catch (e) {
-      alert(`rightcompo condition failed: ${e.message}`);
-    }
-  };
-  useEffect(() => {
-    dispatch(loginAction());
-  }, [useemail]);
-  const getOtp = async () => {
-    try {
-      const res = await setupRecaptcha(phnumber);
 
-      setresult(res);
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-  const verifyOtp = async (main) => {
-    try {
-      let data = await result.confirm(main);
-      console.log("data:", data);
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  const handleSubmit = async () => {
-    setspinner(true);
-    const { email, firstName, lastName } = formData;
-    if (!phnumber.startsWith("+91")) {
       toast({
-        title: "please make sure your phone number startsWith +91",
-        description: "We've sent a 6 digit OTP to your registerder number",
-        status: "warning",
-        duration: 2000,
-        isClosable: true,
-      });
-      window.location.reload();
-      return false;
-    }
-    if (!email || !firstName || !lastName) {
-      alert("please enter all the required fields");
-    } else {
-      await getOtp();
-      await postUser();
-      setspinner(false);
-      toast({
-        title: "OTP sent",
-        description: "We've sent a 6 digit OTP to your registerder number",
+        title: `Signup Successfull Please Login`,
         status: "success",
-        duration: 9000,
+        duration: 3000,
+        isClosable: true,
+      });
+      navigate("/login");
+    } catch (e) {
+      toast({
+        title: `User Already Exists please try Logging in again`,
+        status: "warning",
+        duration: 3000,
         isClosable: true,
       });
     }
   };
-
-  const handleOTP = () => {
-    verifyOtp(otp);
-    toast({
-      title: "Login successfull",
-      description: "Welcome to Medimed",
-      status: "success",
-      duration: 1000,
-      isClosable: true,
-    });
-    navigate("/");
+  const handleSubmit = () => {
+    postUser();
   };
 
   return (
@@ -139,8 +94,9 @@ function SignupRightCompo() {
       <Flex
         direction={"column"}
         align="start"
-        p={["1", "3", "5", "6"]}
-        gap={"2"}
+        fontWeight={"medium"}
+        p={["4", "5", "6", "8"]}
+        gap={"3"}
       >
         <Heading>Create Account</Heading>
         <Text fontSize={"sm"} align={"start"}>
@@ -166,68 +122,30 @@ function SignupRightCompo() {
           onChange={handleChange}
           placeholder="Enter your Last Name"
         ></Input>
-        <Text fontSize={"sm"}>PASSWORD</Text>
+
+        <Text fontSize={"sm"}>PHONE NUMBER</Text>
         <Input
-          type={"text"}
-          name={"password"}
+          type={"number"}
+          name={"phnumber"}
           onChange={handleChange}
-          placeholder="Enter your password"
+          placeholder="Enter your Last Name"
         ></Input>
-        <Text fontSize={"sm"}>VERIFYING NUMBER</Text>
-        <Text>{`We have sent 6 digit OTP on ${phnumber}`}</Text>
-        <Text fontSize={"sm"} fontWeight={"bold"}>
-          PHONE NUMBER
-        </Text>
-
-        <Input
-          type={"text"}
-          onChange={(e) => setphnumber(e.target.value)}
-          value={phnumber}
-          placeholder="Enter your mobile no"
-        />
-
-        <div id="recaptcha-container" />
+        <Center w={"100%"} fontWeight={"normal"}>
+          <Text align={"center"}>
+            Already have an Account?{" "}
+            <span style={{ color: "blue" }}>
+              <Link to={"/login"}> Login</Link>
+            </span>
+          </Text>
+        </Center>
         <Button
-          colorScheme="blue"
-          color={"white"}
-          width={"100%"}
-          bg={"#24AEB1"}
-          _hover={{ backgroundColor: "#24AEB1" }}
           onClick={handleSubmit}
-        >
-          <Flex justify={"space-around"} gap={"3"}>
-            <Text>GET OTP</Text>
-            {spinner && <Spinner />}
-          </Flex>
-        </Button>
-        {/* <Modal isCentered isOpen={isOpen} onClose={onClose}>
-          {overlay}
-          <ModalContent>
-            <ModalHeader>Enter OTP</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-            </ModalBody>
-            <ModalFooter>
-            </ModalFooter>
-          </ModalContent>
-        </Modal> */}
-        <Flex gap={["2", "3", "4", "6"]}>
-          <PinInput otp size={"lg"} placeholder={"."} onChange={setotp}>
-            <PinInputField />
-            <PinInputField />
-            <PinInputField />
-            <PinInputField />
-            <PinInputField />
-            <PinInputField />
-          </PinInput>
-        </Flex>
-        <Button
-          onClick={handleOTP}
           color={"white"}
+          size={"lg"}
           width={"100%"}
           bg={"#24AEB1"}
         >
-          VERIFY OTP
+          Sign up
         </Button>
       </Flex>
     </Box>

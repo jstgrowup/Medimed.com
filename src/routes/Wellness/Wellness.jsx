@@ -11,6 +11,7 @@ import {
   Grid,
   Spacer,
   Heading,
+  useToast,
 } from "@chakra-ui/react";
 import HealthConcernCard from "../Home/HealthConcernCard";
 
@@ -24,18 +25,18 @@ import {
 } from "../../../db.json";
 import axios from "axios";
 import ExploreBeautyCard from "../Home/ExploreBeautyCard";
+import { useSelector } from "react-redux";
 
 const getCartData = async () => {
   //const toast = useToast()
   // https://medimedcom-backend-production.up.railway.app/products
-  let data = await axios.get(
-    "https://medimed-backend.up.railway.app/products"
-  );
+  let data = await axios.get("http://localhost:8080/products");
   return data;
 };
 function Wellness() {
   const [data, setData] = useState([]);
-
+  const loginUserData = useSelector((store) => store.auth.data);
+  const toast = useToast();
   useEffect(() => {
     getCartData()
       .then((res) => {
@@ -45,28 +46,35 @@ function Wellness() {
         console.log(e);
       });
   }, []);
+  axios.interceptors.request.use(
+    function (config) {
+      config.headers.userid = loginUserData._id;
 
+      return config;
+    },
+    function (error) {
+      return Promise.reject(error);
+    }
+  );
   const addToCartHandler = async (id) => {
-    // cartBtnSetState({...cartBtnState,loading:true,error:false,success:false})
     try {
-      let d = await axios.post("https://medimed-backend.up.railway.app/carts/create", {
+      let d = await axios.post("http://localhost:8080/carts/create", {
         productId: id,
       });
       console.log(d);
-      // toast({
-      //   title: `Congratulation Items added in cart`,
-      //   status: "success",
-      //   isClosable: true,
-      // })
+      toast({
+        title: `Congratulation Items added in cart`,
+        status: "success",
+        isClosable: true,
+      });
       alert(" Item added Successfully!!");
     } catch (e) {
-      console.log(e);
-      // toast({
-      //   title: `Something went wrong`,
-      //   status: "error",
-      //   isClosable: true,
-      // })
-      alert("Something went Wrong");
+      // console.log(e.message);
+      toast({
+        title: `Something went wrong`,
+        status: "error",
+        isClosable: true,
+      });
     }
   };
 
@@ -83,7 +91,7 @@ function Wellness() {
         display={{ base: "none", md: "flex" }}
       >
         {categoryArr.map((item) => (
-          <Text key={item} fontSize={{ base: 11, lg: "sm" }} cursor={"pointer"}>
+          <Text fontSize={{ base: 11, lg: "sm" }} cursor={"pointer"}>
             {item}
           </Text>
         ))}
@@ -386,7 +394,6 @@ function Wellness() {
             .splice(0, 4)
             .map((el) => (
               <Flex
-              key={el._id}
                 wrap={"wrap"}
                 direction={"column"}
                 minHeight={"400px"}
@@ -398,7 +405,7 @@ function Wellness() {
                 //height={340}
                 bg={"white"}
               >
-                <Link  to={`/wellness/${el._id}`}>
+                <Link key={el._id} to={`/wellness/${el._id}`}>
                   <Box lineHeight={2} height={"80%"}>
                     <img src={el.url} alt=""></img>
                     <Text fontSize={13} fontWeight={"bold"} pt={3} pl={1}>

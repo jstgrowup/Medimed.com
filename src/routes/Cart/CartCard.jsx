@@ -1,4 +1,4 @@
-
+import { ChevronDownIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -9,10 +9,10 @@ import {
   Text,
   textDecoration,
 } from "@chakra-ui/react";
-
+import axios from "axios";
 import React from "react";
-
-
+import { useEffect } from "react";
+import { useState } from "react";
 
 function CartCard({ data, handleQty, removeCartHandler }) {
   // console.log(data.productId)

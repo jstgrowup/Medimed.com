@@ -8,7 +8,6 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Flex,
-  Heading,
   HStack,
   Image,
   Input,
@@ -17,18 +16,16 @@ import {
   Popover,
   PopoverArrow,
   PopoverBody,
-  PopoverCloseButton,
   PopoverContent,
-  PopoverFooter,
-  PopoverHeader,
   PopoverTrigger,
   Portal,
   Text,
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
+const clientid = import.meta.env.VITE_CLIENT_ID;
 import Medimed from "../../assets/logos/Medimed.com-navbar-removebg.png";
-import { MdShoppingCart, MdHealthAndSafety } from "react-icons/md";
+import { MdHealthAndSafety, MdShoppingCart } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import { IoChevronDown } from "react-icons/io5";
 import { HamburgerIcon } from "@chakra-ui/icons";
@@ -36,37 +33,24 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../store/MainAuth/AuthActions";
 import { useEffect, useState } from "react";
-import axios from "axios";
-const getCartData = async (id) => {
-  try {
-    let res = await axios.get("https://medimed-backend.up.railway.app/carts", {
-      headers: { userid: id },
-    });
-    const { data } = res;
 
-    return data;
-  } catch (error) {
-    console.log(error.message);
-  }
-};
 function Navbar() {
   const navigate = useNavigate();
-  const [text, settext] = useState("");
-  const [result, setresult] = useState([]);
-  const [posi, setposi] = useState("absolute");
-  const [cartdata, setcartdata] = useState([]);
-  const [Cartlength, setlength] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
-
+  const [text, settext] = useState("");
   const {
-    data: { imageURL, firstName, _id },
+    data: { firstName, imageURL },
   } = useSelector((store) => store.auth);
 
   useEffect(() => {
     dispatch(loginAction());
   }, []);
-
+  const handleLogout = async () => {
+    console.log("logout");
+    localStorage.removeItem("lol");
+    window.location.reload();
+  };
   const getData = async () => {
     const response = await axios.get(
       "https://medimed-backend.up.railway.app/search",
@@ -80,33 +64,14 @@ function Navbar() {
     const { data } = response;
     console.log("data:", data);
 
-    setresult(data);
+    // setresult(data);
   };
   useEffect(() => {
     if (!text) {
-      setresult([]);
+      // setresult([]);
     }
     getData();
   }, [text]);
-
-  const handleNavigate = (id) => {
-    navigate(`/wellness/${id}`);
-    setresult([]);
-    settext("");
-  };
-
-  useEffect(() => {
-    getCartData(_id).then((res) => setcartdata(res));
-  }, []);
-  const handleLogout = async () => {
-    try {
-      localStorage.removeItem("email");
-
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <Flex
       bg={"#32aeb0"}
@@ -126,63 +91,31 @@ function Navbar() {
         cursor={"pointer"}
         onClick={() => navigate("/")}
       />
-      <Box w={"50%"} position={"relative"}>
-        <InputGroup
-          bg={"white"}
-          borderTopRadius={"2xl"}
-          size={"lg"}
-          display={{ base: "none", lg: "flex" }}
-        >
-          <InputLeftAddon children={<InputLeftChild />} bg={"white"} />
 
-          <Input
-            onChange={(e) => {
-              return settext(e.target.value);
-            }}
-            type="text"
-            placeholder="Search for medicine & wellness products..."
-            fontSize={"sm"}
-            color={"blackAlpha.700"}
-            focusBorderColor={"none"}
-            fontWeight={500}
-            _placeholder={{
-              color: "blackAlpha.300",
-              fontWeight: 500,
-              letterSpacing: 0.5,
-            }}
-          />
-        </InputGroup>
-        <Box
-          borderBottomRadius={"md"}
-          color={"black"}
-          bg={"white"}
-          px={"17px"}
-          h={"auto"}
-          w={"100%"}
-          position={posi}
-        >
-          {result.map((el) => {
-            return (
-              <Flex
-                _hover={{ backgroundColor: "lightgray" }}
-                cursor={"pointer"}
-                w={"100%"}
-                onClick={() => handleNavigate(el._id)}
-                key={el.url}
-                justify={"space-between"}
-                align={"center"}
-                border={"2px"}
-                borderColor={"white"}
-                h={"50px"}
-              >
-                <Image height={"100%"} src={el.url} />
-                <Text>{el.title}</Text>
-                <Text>{el.price}</Text>
-              </Flex>
-            );
-          })}
-        </Box>
-      </Box>
+      <InputGroup
+        bg={"white"}
+        borderRadius={"2xl"}
+        size={"lg"}
+        display={{ base: "none", lg: "flex" }}
+      >
+        <InputLeftAddon children={<InputLeftChild />} bg={"white"} />
+        <Input
+          onChange={(e) => {
+            return settext(e.target.value);
+          }}
+          type="text"
+          placeholder="Search for medicine & wellness products..."
+          fontSize={"sm"}
+          color={"blackAlpha.700"}
+          focusBorderColor={"none"}
+          fontWeight={500}
+          _placeholder={{
+            color: "blackAlpha.300",
+            fontWeight: 500,
+            letterSpacing: 0.5,
+          }}
+        />
+      </InputGroup>
       <HStack display={{ base: "none", md: "flex" }}>
         <Button
           as={NavLink}
@@ -205,25 +138,22 @@ function Navbar() {
             top={1}
             left={7}
           >
-            {/* {localStorage.getItem("length")} */}
-            {/* {!cartdata.length ? 0 : cartdata.length }
-             */}
             0
           </Box>
         </Button>
-
         <Popover trigger="hover" size={"lg"}>
           <PopoverTrigger>
-            <Button variant={"none"}>
-              <Image src={imageURL} boxSize={"6"} borderRadius={"full"} />
-
+            <Button
+              variant={"none"}
+              leftIcon={
+                <Image src={imageURL} boxSize={"6"} borderRadius={"full"} />
+              }
+            >
               {firstName ? firstName : "Sign in / Sign up"}
             </Button>
           </PopoverTrigger>
           <Portal>
             <PopoverContent bg={"#32AEB0"} color={"white"}>
-              {/* <PopoverArrow /> */}
-
               <PopoverBody>
                 {firstName ? (
                   <VStack>
@@ -279,6 +209,16 @@ function Navbar() {
             </PopoverContent>
           </Portal>
         </Popover>
+        {/* <Button
+          as={NavLink}
+          to={"/login"}
+          leftIcon={
+            <Image src={`${imageURL}`} boxSize={"9"} borderRadius={"full"} />
+          }
+          variant={"none"}
+        >
+          {firstName ? firstName : "Sign in / Sign up"}
+        </Button> */}
       </HStack>
       <Button
         display={{ base: "flex", md: "none" }}
@@ -337,7 +277,13 @@ function Navbar() {
                 bg={"#32AEB0"}
                 color={"white"}
                 letterSpacing={1}
-                leftIcon={imageURL}
+                leftIcon={
+                  <Image
+                    src={`${imageURL}`}
+                    boxSize={"9"}
+                    borderRadius={"full"}
+                  />
+                }
                 variant={"none"}
               >
                 {firstName ? firstName : "Sign in / Sign up"}
