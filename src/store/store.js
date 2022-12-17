@@ -1,7 +1,7 @@
 import { combineReducers, applyMiddleware, legacy_createStore } from "redux";
 import thunk from "redux-thunk";
 import { AuthReducer } from "./MainAuth/AuthReducer";
-import { PaymentState } from "./paymentDetails/PaymentReduces";
+import { PaymentState } from "./paymentDetails/PaymentReducer";
 const rootReducer = combineReducers({
   auth: AuthReducer,
   paymentState: PaymentState,

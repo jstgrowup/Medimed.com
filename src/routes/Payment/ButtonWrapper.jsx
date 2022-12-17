@@ -1,8 +1,9 @@
-import {  useEffect } from "react";
+import { useEffect } from "react";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { useToast } from "@chakra-ui/react";
 
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const style = {
   shape: "pill",
@@ -11,26 +12,23 @@ const style = {
   label: "pay",
 };
 
-// Custom component to wrap the PayPalButtons and handle currency changes
 export const ButtonWrapper = ({ currency, showSpinner }) => {
+  const pay = useSelector((store) => store.paymentState);
   const navigate = useNavigate();
   const toast = useToast();
-
-  const totalw = 900;
+  let totalw = pay.Total;
   let huru = (totalw / 84).toFixed(0);
-
   const amount = `${huru}`;
-
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
-//   useEffect(() => {
-//     dispatch({
-//       type: "resetOptions",
-//       value: {
-//         ...options,
-//         currency: currency,
-//       },
-//     });
-//   }, [currency, showSpinner]);
+  //   useEffect(() => {
+  //     dispatch({
+  //       type: "resetOptions",
+  //       value: {
+  //         ...options,
+  //         currency: currency,
+  //       },
+  //     });
+  //   }, [currency, showSpinner]);
 
   return (
     <>
@@ -59,7 +57,6 @@ export const ButtonWrapper = ({ currency, showSpinner }) => {
         }}
         onApprove={function (data, actions) {
           return actions.order.capture().then(function () {
-          
             navigate("/");
             toast({
               title: "Payment successfull !",

@@ -9,13 +9,14 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { getpaymentdetails } from "../../store/paymentDetails/PaymentActions";
 import CartCard from "./CartCard";
 import PaymentDetails from "./paymentDetails/PaymentDetails";
 const mainColor = "rgb(50,174,177)";
 const getCartData = async (id) => {
-  // http://localhost:8080/products
+
   let data = await axios.get("http://localhost:8080/carts", {
     headers: { userid: id },
   });
@@ -23,9 +24,10 @@ const getCartData = async (id) => {
 };
 function Cart() {
   const userData = useSelector((store) => store.auth);
-  // console.log('userData:', userData)
+
+  const dispatch = useDispatch()
   const [cartData, setCartData] = useState([]);
-  console.log('cartData:', cartData)
+
   const toast = useToast();
   const {
     data: { _id },
@@ -55,6 +57,7 @@ function Cart() {
       .catch((e) => {
         console.log(e);
       });
+      // dispatch(getpaymentdetails(_id))
   }, [_id]);
 
   const fullMrp = FullPrice.toFixed(2);
@@ -129,7 +132,7 @@ function Cart() {
     getCartData()
       .then((res) => {
         setCartData([...res.data]);
-        // console.log(res.data);
+    
         setCartState({
           ...cartState,
           loading: false,
@@ -138,7 +141,7 @@ function Cart() {
         });
       })
       .catch((e) => {
-        console.log(e);
+       
         setCartState({
           ...cartState,
           loading: false,
@@ -147,7 +150,7 @@ function Cart() {
         });
       });
   }, []);
-  // for if empty cart
+  
   if (cartData.length === 0) {
     return (
       <Flex h="350px" flexDirection={"column"} alignItems="center">
