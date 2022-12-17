@@ -35,6 +35,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../store/MainAuth/AuthActions";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { getcartdata } from "../../store/paymentDetails/PaymentActions";
 function Navbar() {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -42,12 +43,18 @@ function Navbar() {
   const [result, setresult] = useState([]);
   const [posi, setposi] = useState("absolute");
   const [text, settext] = useState("");
+
+  const pay = useSelector((store) => store.paymentState);
+  const { data } = pay;
+  console.log('data:', data)
+
   const {
-    data: { firstName, imageURL },
+    data: { firstName, imageURL, _id },
   } = useSelector((store) => store.auth);
 
   useEffect(() => {
     dispatch(loginAction());
+    dispatch(getcartdata(_id));
   }, []);
   const handleLogout = async () => {
     console.log("logout");
@@ -69,7 +76,6 @@ function Navbar() {
     setresult(data);
   };
   useEffect(() => {
-    console.log("text:", text);
     if (!text) {
       setresult([]);
     }
@@ -147,7 +153,7 @@ function Navbar() {
               top={1}
               left={7}
             >
-              0
+              {data?.length ? data.length : 0}
             </Box>
           </Button>
           <Popover trigger="hover" size={"lg"}>

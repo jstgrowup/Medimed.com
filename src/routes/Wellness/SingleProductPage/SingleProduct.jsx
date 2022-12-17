@@ -15,13 +15,13 @@ import {
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { BsFillHeartFill, BsArrowRightCircleFill } from "react-icons/bs";
+
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import BigScreen from "./bigscreen";
-import MainImg from "./carousel/MainImg";
+
 import MobileView from "./mobileScreen";
-import Rating from "./rating/Rating";
+
 import ReviewModal from "./reviewModal";
 const mainColor = "rgb(50,174,177)";
 // https://medimedcom-backend-production.up.railway.app/
@@ -67,7 +67,7 @@ export default function SingleProduct() {
     setState({ ...state, loading: true, error: false, success: false });
     getData(id)
       .then((res) => {
-        console.log(res)
+        console.log(res);
         setSingleData({ ...res.data });
         setState({ ...state, loading: false, error: false, success: true });
       })

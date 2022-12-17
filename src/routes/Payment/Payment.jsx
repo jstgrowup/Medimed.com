@@ -12,19 +12,32 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import useRazorpay from "react-razorpay";
 import PayButton from "./PayButton";
+import { getpaymentdetails } from "../../store/paymentDetails/PaymentActions";
 
 const Payment = () => {
   const Razorpay = useRazorpay();
-  const [totalAmount, settotalAmount] = useState("");
   const [discountAmount, setdiscountAmount] = useState("");
   const prop = useSelector((store) => store.auth);
+  const pay = useSelector((store) => store.paymentState);
+  const [flag, setFlag] = useState(false);
+  const [check, setCheck] = useState(false);
+
+  const dispatch = useDispatch();
+  const {
+    data: { _id },
+  } = prop;
+
+  useEffect(() => {
+    dispatch(getpaymentdetails(_id));
+
+  }, [_id]);
+
   const toast = useToast();
   const navigate = useNavigate();
-
   const handleAmount = async (rupess) => {
     const { data } = await axios.post("http://localhost:8080/payment/order", {
       amount: rupess,
@@ -66,21 +79,10 @@ const Payment = () => {
     rzp1.open();
     navigate("/");
   };
-  const { discount, price, total } = useSelector(
-    (store) => store.paymentState.payload
-  );
 
-  const [flag, setFlag] = useState(false);
-  const [check, setCheck] = useState(false);
-
-  useEffect(() => {
-    settotalAmount(total);
-    setdiscountAmount(discount);
-  }, [discount, price, total]);
 
   return (
     <>
- 
       <Box
         direction={["column", "column", "row", "row"]}
         width={"100%"}
@@ -574,7 +576,7 @@ const Payment = () => {
                 display={"flex"}
               >
                 <Text> MRP Total</Text>
-                <Text>Rs,{price}</Text>
+                <Text>Rs,{pay.MRP}</Text>
               </Box>
               <Box
                 fontSize={"sm"}
@@ -583,7 +585,7 @@ const Payment = () => {
                 display={"flex"}
               >
                 <Text> Nedmeds Discount</Text>
-                <Text>-Rs{discount}</Text>
+                <Text>-Rs{pay.discount}</Text>
               </Box>
               <Box
                 fontSize={"sm"}
@@ -593,7 +595,7 @@ const Payment = () => {
                 display={"flex"}
               >
                 <Text>Total Amount*</Text>
-                <Text>Rs,{totalAmount}</Text>
+                <Text>Rs,{pay.Total}</Text>
               </Box>
               <Box
                 bg={"#F3F8EC"}
@@ -605,7 +607,7 @@ const Payment = () => {
                 display={"flex"}
               >
                 <Text pl={1} color={"green"}>
-                  TOTAL SAVINGS -Rs{discount}
+                  TOTAL SAVINGS -Rs{pay.discount}
                 </Text>
               </Box>
 
@@ -619,7 +621,7 @@ const Payment = () => {
               >
                 <Box>
                   <Text fontSize={"xs"}>TOTAL AMOUNT </Text>
-                  <Text fontSize={"larger"}>Rs,{total}</Text>
+                  <Text fontSize={"larger"}>Rs,{pay.Total}</Text>
                 </Box>
 
                 <Box>
