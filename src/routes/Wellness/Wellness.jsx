@@ -67,7 +67,7 @@ function Wellness() {
         status: "success",
         isClosable: true,
       });
-      alert(" Item added Successfully!!");
+     
     } catch (e) {
       // console.log(e.message);
       toast({
@@ -171,7 +171,7 @@ function Wellness() {
                     lineHeight={2}
                     height={"80%"}
                   >
-                    <img src={el.url} alt=""></img>
+                    <Image src={el.url} alt=""/>
                     <Text fontSize={13} fontWeight={"bold"} pt={3} pl={1}>
                       {el.title}
                     </Text>

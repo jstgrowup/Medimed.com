@@ -67,7 +67,7 @@ export default function SingleProduct() {
     setState({ ...state, loading: true, error: false, success: false });
     getData(id)
       .then((res) => {
-        // console.log(res)
+        console.log(res)
         setSingleData({ ...res.data });
         setState({ ...state, loading: false, error: false, success: true });
       })

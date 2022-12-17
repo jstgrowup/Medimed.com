@@ -7,7 +7,7 @@ import {
   Button,
   Spinner,
   useToast,
-  Skeleton,
+  Skeleton,Image
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { BsFillHeartFill, BsArrowRightCircleFill } from "react-icons/bs";
@@ -28,15 +28,22 @@ export default function BigScreen({
   let month = dileveryDate[2];
   let year = dileveryDate[3];
   return (
-    <Flex m="auto">
+    <Flex m="auto"  >
       {/* /left box */}
       <Skeleton
         isLoaded={!state.loading}
         w="50%"
         bg="white"
+        // h="900px"
         display={["none", "none", "unset", "unset", "unset"]}
       >
-        <MainImg url={singleData?.url} off={singleData?.off} />
+
+
+<Image src={singleData?.url} w="100%" h="60%" />
+
+
+
+        {/* <MainImg url={singleData?.url} off={singleData?.off} /> */}
       </Skeleton>
 
       {/* Right box */}
@@ -52,7 +59,7 @@ export default function BigScreen({
           flexDirection={"column"}
           alignItems={"flex-start  "}
           borderBottom="1px solid gray "
-          lineHeight={2}
+          // lineHeight={2}
         >
           {/* //  Product Title */}
           <Text fontSize={["7px", "10px", "15px", "20px"]}>
@@ -82,7 +89,7 @@ export default function BigScreen({
           flexDirection={"column"}
           alignItems={"flex-start  "}
           borderBottom="1px solid gray "
-          lineHeight={[1, 1, 1, 2]}
+          // lineHeight={[1, 1, 1, 2]}
         >
           <Text
             color={"rgb(239,66,129)"}
@@ -96,7 +103,7 @@ export default function BigScreen({
             w={"100%"}
             fontSize={["10px", "10px", "15px", "20px", "20px"]}
           >
-            M.R.P.:<del>Rs.{singleData?.price}</del>{" "}
+            M.R.P :<del>Rs.{singleData?.price}</del>{" "}
           </Flex>
 
           <Text
@@ -137,7 +144,7 @@ export default function BigScreen({
           <Text fontSize={["12px", "12px", "15px", "20px", "20px"]}>
             Check Availability
           </Text>
-          <br />
+          <br /><br />
           <Flex
             onChange={(e) => setPintext(e.target.value)}
             borderBottom="5px solid rgb(36,174,177)"
@@ -194,7 +201,7 @@ export default function BigScreen({
           >
             OFFERS APPLICABLE
           </Text>
-          <br />
+          <br /> <br />
           <Flex
             justifyContent={"space-between"}
             w="100%"

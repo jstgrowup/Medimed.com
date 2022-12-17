@@ -1,25 +1,25 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import { Box } from "@chakra-ui/react";
+import { Box,Image } from "@chakra-ui/react";
 
 export default function MainImg({ url, off }) {
   // 'horizontal', 'vertical
   return (
-    <div>
-      <Carousel dynamicHeight={true}>
+    
+      <Carousel dynamicHeight={true}  >
         <Box>
-          <img height={"50%"} src={url} />
+          <img  src={url} />
           <p className="legend">{off}</p>
         </Box>
-        <div>
+        <Box>
           <img src={url} />
           {/* <p className="legend">Legend 2</p> */}
-        </div>
-        <div>
+        </Box>
+        <Box>
           <img src={url} />
           {/* <p className="legend">Legend 3</p> */}
-        </div>
+        </Box>
       </Carousel>
-    </div>
+  
   );
 }
