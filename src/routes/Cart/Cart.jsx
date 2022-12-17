@@ -11,23 +11,21 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getpaymentdetails } from "../../store/paymentDetails/PaymentActions";
+import {
+  getcartdata,
+  getpaymentdetails,
+} from "../../store/paymentDetails/PaymentActions";
 import CartCard from "./CartCard";
 import PaymentDetails from "./paymentDetails/PaymentDetails";
 const mainColor = "rgb(50,174,177)";
-const getCartData = async (id) => {
 
-  let data = await axios.get("http://localhost:8080/carts", {
-    headers: { userid: id },
-  });
-  return data;
-};
 function Cart() {
   const userData = useSelector((store) => store.auth);
-
-  const dispatch = useDispatch()
-  const [cartData, setCartData] = useState([]);
-
+  const us = useSelector((store) => store);
+  console.log(us);
+  const dispatch = useDispatch();
+  const [cartDataa, setCartData] = useState([]);
+  const cartData = useSelector((store) => store.paymentState.data);
   const toast = useToast();
   const {
     data: { _id },
@@ -48,23 +46,10 @@ function Cart() {
     0
   );
 
-  useEffect(() => {
-    getCartData(_id)
-      .then((res) => {
-        setCartData([...res.data]);
-        
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-      // dispatch(getpaymentdetails(_id))
-  }, [_id]);
-
   const fullMrp = FullPrice.toFixed(2);
   const handleQty = async ({ id, type }) => {
     setCartState({ ...cartState, loading: true, error: false, success: false });
     try {
-      // let d=await axios.post("http://localhost:8080/carts/update",{
       let d = await axios.post("http://localhost:8080/carts/update", {
         type: type,
         productId: id._id,
@@ -78,14 +63,8 @@ function Cart() {
         success: false,
       });
     }
-    getCartData(_id)
-      .then((res) => {
-        setCartData([...res.data]);
-        // console.log(res.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    dispatch(getcartdata(_id));
+
     setCartState({ ...cartState, loading: false, error: false, success: true });
   };
   const removeCartHandler = async (id) => {
@@ -94,14 +73,9 @@ function Cart() {
       await axios.post("http://localhost:8080/carts/remove", {
         productId: id,
       });
-      getCartData(_id)
-        .then((res) => {
-          setCartData([...res.data]);
-          // console.log(res.data);
-        })
-        .catch((e) => {
-          // console.log(e);
-        });
+
+      dispatch(getcartdata(_id));
+
       toast({
         title: `item removed succesfully`,
         status: "info",
@@ -129,28 +103,15 @@ function Cart() {
   };
   useEffect(() => {
     setCartState({ ...cartState, loading: true, success: false, error: false });
-    getCartData()
-      .then((res) => {
-        setCartData([...res.data]);
-    
-        setCartState({
-          ...cartState,
-          loading: false,
-          success: true,
-          error: false,
-        });
-      })
-      .catch((e) => {
-       
-        setCartState({
-          ...cartState,
-          loading: false,
-          success: false,
-          error: true,
-        });
-      });
-  }, []);
-  
+    dispatch(getcartdata(_id));
+    setCartState({
+      ...cartState,
+      loading: false,
+      success: true,
+      error: false,
+    });
+  }, [_id]);
+
   if (cartData.length === 0) {
     return (
       <Flex h="350px" flexDirection={"column"} alignItems="center">

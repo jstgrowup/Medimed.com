@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GETCARTDATA, GETPAYMENTDETAILS } from "./PaymentActionsTypes";
+import { GETCARTDATA, GETPAYMENTDETAILS, LOADING } from "./PaymentActionsTypes";
 
 export const getpaymentdetails = (id) => async (dispatch) => {
   try {
@@ -43,3 +43,11 @@ export const getcartdata = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const loadingAction=()=>{
+
+return {
+  type:LOADING
+}
+
+}

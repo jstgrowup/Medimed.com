@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 function CartCard({ data, handleQty, removeCartHandler }) {
-  // console.log(data.productId)
+  console.log(data.productId);
 
   let { Fprice, date, mkt, off, price, title, url, _id } = data.productId;
   return (

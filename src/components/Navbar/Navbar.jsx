@@ -46,7 +46,7 @@ function Navbar() {
 
   const pay = useSelector((store) => store.paymentState);
   const { data } = pay;
-  console.log('data:', data)
+  // console.log('data:', data)
 
   const {
     data: { firstName, imageURL, _id },

@@ -25,9 +25,10 @@ import {
 } from "../../../db.json";
 import axios from "axios";
 import ExploreBeautyCard from "../Home/ExploreBeautyCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getcartdata } from "../../store/paymentDetails/PaymentActions";
 
-const getCartData = async () => {
+const getData = async () => {
 
   let data = await axios.get("http://localhost:8080/products");
   return data;
@@ -35,9 +36,13 @@ const getCartData = async () => {
 function Wellness() {
   const [data, setData] = useState([]);
   const loginUserData = useSelector((store) => store.auth.data);
+  const dispatch=useDispatch()
+  console.log(loginUserData);
   const toast = useToast();
   useEffect(() => {
-    getCartData()
+
+    
+    getData()
       .then((res) => {
         setData([...res.data]);
       })
@@ -66,7 +71,7 @@ function Wellness() {
         status: "success",
         isClosable: true,
       });
-     
+      dispatch(getcartdata(loginUserData._id))
     } catch (e) {
       // console.log(e.message);
       toast({

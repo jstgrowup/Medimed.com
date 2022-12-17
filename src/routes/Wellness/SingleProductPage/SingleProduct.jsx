@@ -52,7 +52,7 @@ export default function SingleProduct() {
   axios.interceptors.request.use(
     function (config) {
       config.headers.userid = loginUserData._id;
-
+      
       return config;
     },
     function (error) {
@@ -74,7 +74,7 @@ export default function SingleProduct() {
       .catch((e) => {
         setState({ ...state, loading: false, error: true, success: false });
       });
-  }, [id]);
+  }, [id,loginUserData._id]);
 
   ///add to cart locic front end
   const addToCartHandler = async () => {
