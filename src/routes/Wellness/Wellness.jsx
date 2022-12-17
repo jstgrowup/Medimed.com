@@ -28,8 +28,7 @@ import ExploreBeautyCard from "../Home/ExploreBeautyCard";
 import { useSelector } from "react-redux";
 
 const getCartData = async () => {
-  //const toast = useToast()
-  // https://medimedcom-backend-production.up.railway.app/products
+
   let data = await axios.get("http://localhost:8080/products");
   return data;
 };

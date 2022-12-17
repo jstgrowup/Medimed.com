@@ -30,7 +30,7 @@ import { MdHealthAndSafety, MdShoppingCart } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import { IoChevronDown } from "react-icons/io5";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../store/MainAuth/AuthActions";
 import { useEffect, useState } from "react";
@@ -65,16 +65,20 @@ function Navbar() {
       }
     );
     const { data } = response;
-    // console.log("data:", data);
 
     setresult(data);
   };
   useEffect(() => {
+    console.log("text:", text);
     if (!text) {
       setresult([]);
     }
     getData();
   }, [text]);
+  const handleNavigate = (id) => {
+    navigate(`/wellness/${id}`);
+    setresult([]);
+  };
   return (
     <>
       <Flex
@@ -281,7 +285,7 @@ function Navbar() {
           // px={"17px"}
           // h={"auto"}
           zIndex={"77"}
-          w={["80%","70%","60%"]}
+          w={["80%", "70%", "60%"]}
           position={posi}
         >
           {result.map((el) => {
@@ -291,8 +295,8 @@ function Navbar() {
                 _hover={{ backgroundColor: "lightgray" }}
                 cursor={"pointer"}
                 w={"100%"}
-                onClick={() => handleNavigate(el._id)}
                 key={el.url}
+                onClick={() => handleNavigate(el._id)}
                 justify={"space-between"}
                 align={"center"}
                 border={"2px"}
