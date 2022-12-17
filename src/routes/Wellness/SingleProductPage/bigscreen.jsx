@@ -101,26 +101,30 @@ export default function BigScreen({
           <Flex
             gap="2%"
             w={"100%"}
-            fontSize={["10px", "10px", "15px", "20px", "20px"]}
+            fontSize={["10px", "10px", "15px", "18px", "18px"]}
           >
             M.R.P :<del>Rs.{singleData?.price}</del>{" "}
           </Flex>
 
           <Text
-            fontSize={["12px", "12px", "15px", "20px", "20px"]}
+            fontSize={["12px", "12px", "15px", "18px", "18px"]}
             color={"green"}
           >
             {singleData?.off} (Inclusive of all taxes)
           </Text>
-          <Text fontSize={["12px", "12px", "15px", "20px", "20px"]}>
+          <i>
+
+          <Text fontSize={["10px", "12px", "15px", "15px", "15px"]}>
             * {singleData?.mkt}
           </Text>
-          <Text fontSize={["12px", "12px", "15px", "20px", "20px"]}>
+          
+          <Text fontSize={["12px", "12px", "15px", "15px", "15px"]}>
             * Country of Origin: India
           </Text>
-          <Text fontSize={["12px", "12px", "15px", "20px", "20px"]}>
+          <Text fontSize={["12px", "12px", "15px", "15px", "15px"]}>
             * Delivery charges if applicable will be applied at checkout
           </Text>
+          </i>
           <br />
           <Button
             fontSize={["10px", "10px", "15px", "20px", "20px"]}
@@ -141,7 +145,7 @@ export default function BigScreen({
           alignItems={"flex-start  "}
           lineHeight={1}
         >
-          <Text fontSize={["12px", "12px", "15px", "20px", "20px"]}>
+          <Text fontSize={["12px", "12px", "15px", "18px", "18px"]}>
             Check Availability
           </Text>
           <br /><br />
@@ -153,7 +157,7 @@ export default function BigScreen({
             gap="2px"
           >
             <Text
-              fontSize={["15px", "15px", "20px", "25px", "25px"]}
+              fontSize={["12px", "12px", "15px", "20px", "20px"]}
               color={"rgb(36,174,177)"}
             >
               PINCODE:
@@ -197,7 +201,7 @@ export default function BigScreen({
           <br />
           <Text
             color={"rgb(111,115,136)"}
-            fontSize={["20px", "20px", "25px", "30px", "30px"]}
+            fontSize={["15px", "15px", "20px", "25px", "25px"]}
           >
             OFFERS APPLICABLE
           </Text>
