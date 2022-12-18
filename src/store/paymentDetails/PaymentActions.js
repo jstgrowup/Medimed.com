@@ -44,10 +44,8 @@ export const getcartdata = (id) => async (dispatch) => {
   }
 };
 
-export const loadingAction=()=>{
-
-return {
-  type:LOADING
-}
-
-}
+export const loadingAction = () => {
+  return {
+    type: LOADING,
+  };
+};

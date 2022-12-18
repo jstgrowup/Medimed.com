@@ -216,10 +216,13 @@ function LoginRightCompo() {
           <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
-              <ModalHeader>Modal Title</ModalHeader>
+              <ModalHeader>Please enter your OTP</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
-                <Text fontSize={"sm"}>VERIFYING NUMBER</Text>
+                <Text fontSize={"sm"}>
+                  PLEASE ENTER THE 6 DIGIT OTP THAT WAS SENT TO YOUR REGISTERED
+                  PHONE NUMBER
+                </Text>
                 <Text>{`We have sent 6 digit OTP on ${phnumber}`}</Text>
                 <HStack gap={[2, 3, 5, 6]}>
                   <PinInput otp size={"lg"} placeholder={"."} onChange={setotp}>
@@ -245,7 +248,7 @@ function LoginRightCompo() {
                   bg={"#24AEB1"}
                   onClick={() => verifyOtp()}
                 >
-                  Verify
+                  Login
                 </Button>
               </ModalFooter>
             </ModalContent>
