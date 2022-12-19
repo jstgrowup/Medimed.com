@@ -83,10 +83,10 @@ we really enjoyed this whole part of developing and had a learing experience and
 
 ### Roles
 
-**[Md Mostafijur Rahman]** Entire Home Page (Team Lead)\
-**[Sk Ismile]** Single Product Page,Cart Page(frontend & Backend)\
-**[Pratik Kharat]** Product page,Payment Page & Checkout Page\
-**[Subham Dey]** Sign up,Login Page , user Profile Page & Paypal Payment(Frontend & Backend)\
+**[Md Mostafijur Rahman]** -> Entire Home Page (Team Lead)\
+**[Sk Ismile]** -> Single Product Page,Cart Page(frontend & Backend)\
+**[Pratik Kharat]** -> Product page,Payment Page & Checkout Page\
+**[Subham Dey]** -> Sign up,Login Page , user Profile Page & Paypal Payment(Frontend & Backend)\
 
 ### Team Members
 
