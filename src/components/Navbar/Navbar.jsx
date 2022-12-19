@@ -46,7 +46,7 @@ function Navbar() {
 
   const pay = useSelector((store) => store.paymentState);
   const { data } = pay;
-  // console.log('data:', data)
+
 
   const {
     data: { firstName, imageURL, _id },
@@ -57,7 +57,7 @@ function Navbar() {
     dispatch(getcartdata(_id));
   }, []);
   const handleLogout = async () => {
-    console.log("logout");
+   
     localStorage.removeItem("lol");
     window.location.reload();
   };

@@ -37,7 +37,7 @@ function Wellness() {
   const [data, setData] = useState([]);
   const loginUserData = useSelector((store) => store.auth.data);
   const dispatch=useDispatch()
-  console.log(loginUserData);
+
   const toast = useToast();
   useEffect(() => {
 
@@ -73,7 +73,7 @@ function Wellness() {
       });
       dispatch(getcartdata(loginUserData._id))
     } catch (e) {
-      // console.log(e.message);
+      console.log(e.message);
       toast({
         title: `Something went wrong`,
         status: "error",

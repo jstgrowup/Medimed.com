@@ -61,13 +61,13 @@ export default function SingleProduct() {
     }
   );
 
-  // console.log(loginUserData)
+
 
   useEffect(() => {
     setState({ ...state, loading: true, error: false, success: false });
     getData(id)
       .then((res) => {
-        console.log(res);
+      
         setSingleData({ ...res.data });
         setState({ ...state, loading: false, error: false, success: true });
       })
@@ -88,7 +88,7 @@ export default function SingleProduct() {
       let d = await axios.post("http://localhost:8080/carts/create", {
         productId: id,
       });
-      // console.log(d)
+  
       cartBtnSetState({
         ...cartBtnState,
         loading: false,
