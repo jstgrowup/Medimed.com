@@ -81,6 +81,13 @@ Home -> login/signup -> Wellness Page -> choose products -> Product detail page 
 <h1>TEAM MEMBERS AND MESSAGE></h1>
 we really enjoyed this whole part of developing and had a learing experience and have given our best efforts to bring the BEST thing as POSSIBLE.
 
+### Roles
+
+**[Md Mostafijur Rahman]** Entire Home Page (Team Lead)
+**[Sk Ismile]** Single Product Page,Cart Page(frontend & Backend)
+**[Pratik Kharat]** Product page,Payment Page & Checkout Page
+**[Subham Dey]** Sign up,Login Page , user Profile Page & Paypal Payment(Frontend & Backend)
+
 ### Team Members
 
 - [Md Mostafijur Rahman](https://github.com/iammostak)
