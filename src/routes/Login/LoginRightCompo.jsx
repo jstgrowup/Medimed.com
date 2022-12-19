@@ -122,7 +122,7 @@ function LoginRightCompo() {
   };
 
   const onSuccess = async (res) => {
-    console.log("res:", res);
+   
     // const { displayName, email, photoUrl } = res.profileObj
     // const [firstName, lastName] = displayName.trim().split(" ");
     // try {

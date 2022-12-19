@@ -48,6 +48,7 @@ function Navbar() {
   const pay = useSelector((store) => store.paymentState);
   const { data } = pay;
 
+
   const {
     data: { firstName, imageURL, _id },
   } = useSelector((store) => store.auth);
@@ -56,7 +57,9 @@ function Navbar() {
     dispatch(loginAction());
     dispatch(getcartdata(_id));
   }, []);
+
   const handleLogout = () => {
+
     localStorage.removeItem("lol");
     toast({
       title: "Logout successfull",
