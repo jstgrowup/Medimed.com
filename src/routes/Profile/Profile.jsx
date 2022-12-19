@@ -14,7 +14,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const clientid = import.meta.env.VITE_CLIENT_ID;
 function Profile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();

@@ -28,7 +28,6 @@ import { FaFacebookSquare } from "react-icons/fa";
 
 import { useUserAuth } from "./Context";
 
-
 import { loginAction } from "../../store/MainAuth/AuthActions";
 import { useDispatch } from "react-redux";
 
@@ -122,7 +121,6 @@ function LoginRightCompo() {
   };
 
   const onSuccess = async (res) => {
-   
     // const { displayName, email, photoUrl } = res.profileObj
     // const [firstName, lastName] = displayName.trim().split(" ");
     // try {
@@ -132,7 +130,6 @@ function LoginRightCompo() {
     //     email: email,
     //     imageURL: photoUrl,
     //   });
-
     //   localStorage.setItem("lol", email);
     //   toast({
     //     title: "Login successfull",
@@ -163,7 +160,8 @@ function LoginRightCompo() {
   };
 
   const onsubmit = () => {
-    getOtp().then(() => onOpen());
+    // getOtp().then(() => onOpen());
+    onOpen();
   };
   return (
     <>
@@ -201,9 +199,10 @@ function LoginRightCompo() {
             width={"100%"}
             isLoading={loading ? true : false}
             bg={"#24AEB1"}
+            _hover={{ backgroundColor: "#24AEB1" }}
             onClick={onsubmit}
           >
-            GET OTP
+            Login
           </Button>
           <Center w={"100%"} fontWeight={"medium"}>
             <Text align={"center"}>
@@ -216,14 +215,15 @@ function LoginRightCompo() {
           <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
-              <ModalHeader>Please enter your OTP</ModalHeader>
+              <ModalHeader>
+                Please enter 6 digit OTP which was sent to your registered phone
+                number
+              </ModalHeader>
               <ModalCloseButton />
               <ModalBody>
-                <Text fontSize={"sm"}>
-                  PLEASE ENTER THE 6 DIGIT OTP THAT WAS SENT TO YOUR REGISTERED
-                  PHONE NUMBER
-                </Text>
-                <Text>{`We have sent 6 digit OTP on ${phnumber}`}</Text>
+                <Text
+                  fontSize={"lg"}
+                >{`We have sent 6 digit OTP on ${phnumber}`}</Text>
                 <HStack gap={[2, 3, 5, 6]}>
                   <PinInput otp size={"lg"} placeholder={"."} onChange={setotp}>
                     <PinInputField />
@@ -237,15 +237,13 @@ function LoginRightCompo() {
               </ModalBody>
 
               <ModalFooter>
-                <Button colorScheme="blue" mr={3} onClick={onClose}>
-                  Close
-                </Button>
                 <Button
                   color={"white"}
                   size={"lg"}
                   width={"100%"}
                   isLoading={loading ? true : false}
                   bg={"#24AEB1"}
+                  _hover={{ backgroundColor: "#24AEB1" }}
                   onClick={() => verifyOtp()}
                 >
                   Login
