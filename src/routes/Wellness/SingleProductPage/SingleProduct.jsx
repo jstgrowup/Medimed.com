@@ -133,11 +133,7 @@ export default function SingleProduct() {
           state={state}
           cartBtnState={cartBtnState}
         />
-        {/* 1ts step end here */}
-        <br />
-        <br />
-        <br />
-        {/* second step start here  */}
+       
         <Box>
           <Flex
             flexDirection={"column"}
