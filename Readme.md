@@ -1,7 +1,7 @@
 # Medimed.com
 
  <h2>Welcome to this repo</h2>
- We are team of 4 members ( Md Mostafijur Rahman, SK Ismile, Subham Dey ) has completed the task in 5 days Gave our 
+ We are team of 4 members ( Md Mostafijur Rahman, SK Ismile, Subham Dey, Pratik Kharat) has completed the task in 5 days Gave our 
  best efforts to Construct this project.
 In case of any suggestion and query feel free to connect us.
  
@@ -83,9 +83,9 @@ we really enjoyed this whole part of developing and had a learing experience and
 
 ### Team Members
 
-- **[Md Mostafijur Rahman]**
-- **[SK Ismile]**
-- **[Pratik Kharat]**
-- **[Subham Dey]**
+- [Md Mostafijur Rahman](https://github.com/iammostak)
+- [SK Ismile](https://github.com/skismile)
+- [Pratik Kharat](https://github.com/pkharat29)
+- [Subham Dey](https://github.com/jstgrowup)
 
 ---
