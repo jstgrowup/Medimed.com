@@ -27,10 +27,10 @@ import React, { useEffect, useState } from "react";
 import { FaFacebookSquare } from "react-icons/fa";
 
 import { useUserAuth } from "./Context";
-const clientid = import.meta.env.VITE_CLIENT_ID;
+
 
 import { loginAction } from "../../store/MainAuth/AuthActions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -73,7 +73,7 @@ function LoginRightCompo() {
       } = data;
 
       let res = await axios.post(
-        "http://localhost:8080/auth/getViaPhonenumber",
+        "https://medimedbackendtestrepo-production.up.railway.app/auth/getViaPhonenumber",
         {
           phnumber: phoneNumber,
         }

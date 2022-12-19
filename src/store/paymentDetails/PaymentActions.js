@@ -3,7 +3,7 @@ import { GETCARTDATA, GETPAYMENTDETAILS, LOADING } from "./PaymentActionsTypes";
 
 export const getpaymentdetails = (id) => async (dispatch) => {
   try {
-    const res = await axios.get("http://localhost:8080/carts", {
+    const res = await axios.get("https://medimedbackendtestrepo-production.up.railway.app/carts", {
       headers: { userid: id },
     });
 
@@ -29,7 +29,7 @@ export const getpaymentdetails = (id) => async (dispatch) => {
 };
 export const getcartdata = (id) => async (dispatch) => {
   try {
-    const res = await axios.get("http://localhost:8080/carts", {
+    const res = await axios.get("https://medimedbackendtestrepo-production.up.railway.app/carts", {
       headers: { userid: id },
     });
 

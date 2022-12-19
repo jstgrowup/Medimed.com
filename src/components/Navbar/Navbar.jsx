@@ -69,7 +69,7 @@ function Navbar() {
   };
   const getData = async () => {
     const response = await axios.get(
-      "http://localhost:8080/search/get",
+      "https://medimedbackendtestrepo-production.up.railway.app/search/get",
 
       {
         params: {

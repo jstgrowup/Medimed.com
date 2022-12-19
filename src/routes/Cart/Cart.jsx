@@ -50,7 +50,7 @@ function Cart() {
   const handleQty = async ({ id, type }) => {
     setCartState({ ...cartState, loading: true, error: false, success: false });
     try {
-      let d = await axios.post("http://localhost:8080/carts/update", {
+      let d = await axios.post("https://medimedbackendtestrepo-production.up.railway.app/carts/update", {
         type: type,
         productId: id._id,
       });
@@ -70,7 +70,7 @@ function Cart() {
   const removeCartHandler = async (id) => {
     setCartState({ ...cartState, loading: true, error: false, success: false });
     try {
-      await axios.post("http://localhost:8080/carts/remove", {
+      await axios.post("https://medimedbackendtestrepo-production.up.railway.app/carts/remove", {
         productId: id,
       });
 
