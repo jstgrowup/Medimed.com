@@ -63,7 +63,7 @@ function SignupRightCompo() {
     }
     try {
       const res = await axios.post(
-        "http://localhost:8080/auth/postUserViaForm",
+        "https://medimedbackendtestrepo-production.up.railway.app/auth/postUserViaForm",
         formData
       );
 

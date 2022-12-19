@@ -26,7 +26,7 @@ import ReviewModal from "./reviewModal";
 const mainColor = "rgb(50,174,177)";
 // https://medimedcom-backend-production.up.railway.app/
 const getData = async (id) => {
-  let d = await axios.get(`http://localhost:8080/products/single/${id}`);
+  let d = await axios.get(`https://medimedbackendtestrepo-production.up.railway.app/products/single/${id}`);
   // let d=await axios.get(`https://netmeds-new-api.herokuapp.com/products/${id}`)
 
   return d;
@@ -56,7 +56,7 @@ export default function SingleProduct() {
       return config;
     },
     function (error) {
-      // Do something with request error
+      
       return Promise.reject(error);
     }
   );
@@ -85,7 +85,7 @@ export default function SingleProduct() {
       success: false,
     });
     try {
-      let d = await axios.post("http://localhost:8080/carts/create", {
+      let d = await axios.post("https://medimedbackendtestrepo-production.up.railway.app/carts/create", {
         productId: id,
       });
   

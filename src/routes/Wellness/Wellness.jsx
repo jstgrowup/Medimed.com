@@ -30,7 +30,7 @@ import { getcartdata } from "../../store/paymentDetails/PaymentActions";
 
 const getData = async () => {
 
-  let data = await axios.get("http://localhost:8080/products");
+  let data = await axios.get("https://medimedbackendtestrepo-production.up.railway.app/products");
   return data;
 };
 function Wellness() {
@@ -62,7 +62,7 @@ function Wellness() {
   );
   const addToCartHandler = async (id) => {
     try {
-      let d = await axios.post("http://localhost:8080/carts/create", {
+      let d = await axios.post("https://medimedbackendtestrepo-production.up.railway.app/carts/create", {
         productId: id,
       });
   

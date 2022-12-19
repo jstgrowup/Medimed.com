@@ -7,33 +7,34 @@ import {
   Image,
   Stack,
   Text,
+  useToast,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginAction } from "../../store/MainAuth/AuthActions";
+
 const clientid = import.meta.env.VITE_CLIENT_ID;
 function Profile() {
-  const [bool, setbool] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const toast = useToast();
   const {
     data: { _id, imageURL, firstName, email },
   } = useSelector((store) => store.auth);
-  const logout = async () => {
+  const logout = () => {
     localStorage.removeItem("lol");
-    window.location.reload();
     toast({
       title: "Logout successfull",
       status: "success",
       duration: 3000,
       isClosable: true,
     });
-    setbool(!bool);
+    window.location.reload();
+
     navigate("/login");
   };
-  
+
   const handleMail = () => {
     window.location.href = "mailto:deysubham999@gmail.com";
   };
@@ -113,6 +114,7 @@ function Profile() {
               Contact
             </Button>
             <Button
+              onClick={logout}
               size="lg"
               flex={1}
               fontSize={"md"}

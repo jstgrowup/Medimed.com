@@ -22,15 +22,16 @@ import {
   Portal,
   Text,
   useDisclosure,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
-const clientid = import.meta.env.VITE_CLIENT_ID;
+
 import Medimed from "../../assets/logos/Medimed.com-navbar-removebg.png";
 import { MdHealthAndSafety, MdShoppingCart } from "react-icons/md";
-import { FaUserCircle } from "react-icons/fa";
+
 import { IoChevronDown } from "react-icons/io5";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../store/MainAuth/AuthActions";
 import { useEffect, useState } from "react";
@@ -43,7 +44,7 @@ function Navbar() {
   const [result, setresult] = useState([]);
   const [posi, setposi] = useState("absolute");
   const [text, settext] = useState("");
-
+  const toast = useToast();
   const pay = useSelector((store) => store.paymentState);
   const { data } = pay;
 
@@ -56,14 +57,22 @@ function Navbar() {
     dispatch(loginAction());
     dispatch(getcartdata(_id));
   }, []);
-  const handleLogout = async () => {
-   
+
+  const handleLogout = () => {
+
     localStorage.removeItem("lol");
+    toast({
+      title: "Logout successfull",
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+    });
     window.location.reload();
+    navigate("/login");
   };
   const getData = async () => {
     const response = await axios.get(
-      "http://localhost:8080/search/get",
+      "https://medimedbackendtestrepo-production.up.railway.app/search/get",
 
       {
         params: {
@@ -256,11 +265,11 @@ function Navbar() {
                   Wellness
                 </Button>
               </Box>
-              <Box>
+              <Box onClick={() => navigate("/profile")}>
                 <Button
                   w={"full"}
                   size={"lg"}
-                  as={NavLink}
+                  // as={NavLink}
                   to={"/login"}
                   bg={"#32AEB0"}
                   color={"white"}
@@ -297,11 +306,11 @@ function Navbar() {
           {result.map((el) => {
             return (
               <Flex
+                key={el._id}
                 borderBottomRadius={"lg"}
                 _hover={{ backgroundColor: "lightgray" }}
                 cursor={"pointer"}
                 w={"100%"}
-                key={el.url}
                 onClick={() => handleNavigate(el._id)}
                 justify={"space-between"}
                 align={"center"}
