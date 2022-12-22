@@ -39,7 +39,7 @@ const Payment = () => {
   const toast = useToast();
   const navigate = useNavigate();
   const handleAmount = async (rupess) => {
-    const { data } = await axios.post("https://medimedbackendtestrepo-production.up.railway.app/payment/order", {
+    const { data } = await axios.post("https://frantic-foal-sweatpants.cyclic.app/payment/order", {
       amount: rupess,
     });
 

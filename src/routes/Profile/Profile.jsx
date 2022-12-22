@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 
 function Profile() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
   const toast = useToast();
   const {
     data: { _id, imageURL, firstName, email },

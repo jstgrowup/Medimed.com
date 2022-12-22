@@ -72,7 +72,7 @@ function LoginRightCompo() {
       } = data;
 
       let res = await axios.post(
-        "https://medimedbackendtestrepo-production.up.railway.app/auth/getViaPhonenumber",
+        "https://frantic-foal-sweatpants.cyclic.app/auth/getViaPhonenumber",
         {
           phnumber: phoneNumber,
         }
@@ -160,8 +160,7 @@ function LoginRightCompo() {
   };
 
   const onsubmit = () => {
-    // getOtp().then(() => onOpen());
-    onOpen();
+    getOtp().then(() => onOpen());
   };
   return (
     <>

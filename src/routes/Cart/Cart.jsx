@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   getcartdata,
-  getpaymentdetails,
+
 } from "../../store/paymentDetails/PaymentActions";
 import CartCard from "./CartCard";
 import PaymentDetails from "./paymentDetails/PaymentDetails";
@@ -50,7 +50,7 @@ function Cart() {
   const handleQty = async ({ id, type }) => {
     setCartState({ ...cartState, loading: true, error: false, success: false });
     try {
-      let d = await axios.post("https://medimedbackendtestrepo-production.up.railway.app/carts/update", {
+      let d = await axios.post("https://frantic-foal-sweatpants.cyclic.app/carts/update", {
         type: type,
         productId: id._id,
       });
@@ -70,7 +70,7 @@ function Cart() {
   const removeCartHandler = async (id) => {
     setCartState({ ...cartState, loading: true, error: false, success: false });
     try {
-      await axios.post("https://medimedbackendtestrepo-production.up.railway.app/carts/remove", {
+      await axios.post("https://frantic-foal-sweatpants.cyclic.app/carts/remove", {
         productId: id,
       });
 

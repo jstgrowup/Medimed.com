@@ -34,7 +34,7 @@ function SignupRightCompo() {
   const [useemail, setuseemail] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [response, setresponse] = useState();
+
   const [formData, setformData] = useState({
     email: "",
     firstName: "",
@@ -63,7 +63,7 @@ function SignupRightCompo() {
     }
     try {
       const res = await axios.post(
-        "https://medimedbackendtestrepo-production.up.railway.app/auth/postUserViaForm",
+        "https://frantic-foal-sweatpants.cyclic.app/auth/postUserViaForm",
         formData
       );
 

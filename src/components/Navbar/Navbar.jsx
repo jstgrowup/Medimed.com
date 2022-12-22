@@ -15,7 +15,7 @@ import {
   InputGroup,
   InputLeftAddon,
   Popover,
-  PopoverArrow,
+
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
@@ -72,7 +72,7 @@ function Navbar() {
   };
   const getData = async () => {
     const response = await axios.get(
-      "https://medimedbackendtestrepo-production.up.railway.app/search/get",
+      "https://frantic-foal-sweatpants.cyclic.app/search/get",
 
       {
         params: {

@@ -26,8 +26,8 @@ import ReviewModal from "./reviewModal";
 const mainColor = "rgb(50,174,177)";
 // https://medimedcom-backend-production.up.railway.app/
 const getData = async (id) => {
-  let d = await axios.get(`https://medimedbackendtestrepo-production.up.railway.app/products/single/${id}`);
-  // let d=await axios.get(`https://netmeds-new-api.herokuapp.com/products/${id}`)
+  let d = await axios.get(`https://frantic-foal-sweatpants.cyclic.app/products/single/${id}`);
+
 
   return d;
 };
@@ -85,7 +85,7 @@ export default function SingleProduct() {
       success: false,
     });
     try {
-      let d = await axios.post("https://medimedbackendtestrepo-production.up.railway.app/carts/create", {
+      let d = await axios.post("https://frantic-foal-sweatpants.cyclic.app/carts/create", {
         productId: id,
       });
   

@@ -5,7 +5,7 @@ export const loginAction = () => async (dispatcher) => {
   try {
     const data = localStorage.getItem("lol");
   
-    const res = await axios.post("https://medimedbackendtestrepo-production.up.railway.app/auth/getuser", {
+    const res = await axios.post("https://frantic-foal-sweatpants.cyclic.app/auth/getuser", {
       email: data,
     });
 

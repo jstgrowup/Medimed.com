@@ -1,18 +1,18 @@
 import {
   signInWithPhoneNumber,
   RecaptchaVerifier,
-  signInWithRedirect,
+
   GoogleAuthProvider,
   signInWithPopup,
   onAuthStateChanged,
 } from "firebase/auth";
 import React, { createContext, useContext, useState } from "react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { auth } from "./Firebase";
 export const userAuthContext = createContext({});
 export function UserAuthContextProvider({ children }) {
-  const navigate = useNavigate();
+  
   const [name, setname] = useState("");
   const [user, setuser] = useState({});
   function setupRecaptcha(number) {
