@@ -36,7 +36,7 @@ https://github.com/jstgrowup/Medimed.com_Backend
 
 ### Backend Deployed Link
 
-https://medimedbackendtestrepo-production.up.railway.app
+https://frantic-foal-sweatpants.cyclic.app
 
 ### Following are the Screenshots for the reference
 
