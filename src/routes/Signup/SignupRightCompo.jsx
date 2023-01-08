@@ -62,8 +62,9 @@ function SignupRightCompo() {
       });
     }
     try {
-      const res = await axios.post(
+      await axios.post(
         "https://frantic-foal-sweatpants.cyclic.app/auth/postUserViaForm",
+
         formData
       );
 
@@ -75,12 +76,36 @@ function SignupRightCompo() {
       });
       navigate("/login");
     } catch (e) {
-      toast({
-        title: `User Already Exists please try Logging in again`,
-        status: "warning",
-        duration: 3000,
-        isClosable: true,
-      });
+      if (!e.response.data._message) {
+        toast({
+          title: `${e.response.data.message}`,
+          status: "warning",
+          duration: 3000,
+          isClosable: true,
+        });
+      }
+      const {
+        response: {
+          data: { errors, _message },
+        },
+      } = e;
+
+      if (errors.email && _message) {
+        toast({
+          title: `${errors.email.message}`,
+          status: "warning",
+          duration: 3000,
+          isClosable: true,
+        });
+      }
+      if (errors.phnumber && _message) {
+        toast({
+          title: `${errors.phnumber.message}`,
+          status: "warning",
+          duration: 3000,
+          isClosable: true,
+        });
+      }
     }
   };
   const handleSubmit = () => {

@@ -21,10 +21,10 @@ const mainColor = "rgb(50,174,177)";
 
 function Cart() {
   const userData = useSelector((store) => store.auth);
-  const us = useSelector((store) => store);
+ 
 
   const dispatch = useDispatch();
-  const [cartDataa, setCartData] = useState([]);
+ 
   const cartData = useSelector((store) => store.paymentState.data);
   const toast = useToast();
   const {

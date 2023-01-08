@@ -37,7 +37,7 @@ import { Link, useNavigate } from "react-router-dom";
 function LoginRightCompo() {
   const [otp, setotp] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { setupRecaptcha, googleSignIn, logOut, user } = useUserAuth();
+  const { setupRecaptcha } = useUserAuth();
 
   const [phnumber, setphnumber] = useState("+91");
   const navigate = useNavigate();
