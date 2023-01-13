@@ -40,7 +40,9 @@ function SignupRightCompo() {
     firstName: "",
     lastName: "",
     phnumber: "",
-    imageURL: "https://i.pravatar.cc/300",
+    imageURL:`https://randomuser.me/api/portraits/men/${Math.floor(
+      Math.random() * 10
+    )}.jpg`,
   });
 
   useEffect(() => {
