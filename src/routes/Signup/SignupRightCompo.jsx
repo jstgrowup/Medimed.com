@@ -79,7 +79,7 @@ function SignupRightCompo() {
       });
       navigate("/login");
     } catch (e) {
-      console.log("e:", e);
+   
       if (!e.response.data._message) {
         toast({
           title: `${e.response.data.message}`,
