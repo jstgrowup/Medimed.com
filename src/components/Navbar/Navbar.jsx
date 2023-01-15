@@ -168,7 +168,7 @@ function Navbar() {
                 variant={"none"}
                 leftIcon={
                   imageURL ? (
-                    <Image src={imageURL} boxSize={"6"} borderRadius={"full"} />
+                    <Image src={imageURL} boxSize={"9"} borderRadius={"full"} />
                   ) : (
                     <Image
                       boxSize={"9"}
