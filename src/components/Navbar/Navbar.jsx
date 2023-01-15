@@ -15,7 +15,6 @@ import {
   InputGroup,
   InputLeftAddon,
   Popover,
-
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
@@ -48,7 +47,6 @@ function Navbar() {
   const pay = useSelector((store) => store.paymentState);
   const { data } = pay;
 
-
   const {
     data: { firstName, imageURL, _id },
   } = useSelector((store) => store.auth);
@@ -59,7 +57,6 @@ function Navbar() {
   }, []);
 
   const handleLogout = () => {
-
     localStorage.removeItem("lol");
     toast({
       title: "Logout successfull",
@@ -170,7 +167,14 @@ function Navbar() {
               <Button
                 variant={"none"}
                 leftIcon={
-                  <Image src={imageURL} boxSize={"6"} borderRadius={"full"} />
+                  imageURL ? (
+                    <Image src={imageURL} boxSize={"6"} borderRadius={"full"} />
+                  ) : (
+                    <Image
+                      boxSize={"9"}
+                      src="https://img.freepik.com/free-icon/user_318-159711.jpg?w=2000"
+                    />
+                  )
                 }
               >
                 {firstName ? firstName : "Sign in / Sign up"}
@@ -297,8 +301,6 @@ function Navbar() {
           color={"black"}
           bg={"white"}
           boxShadow={"dark-lg"}
-          // px={"17px"}
-          // h={"auto"}
           zIndex={"77"}
           w={["80%", "70%", "60%"]}
           position={posi}

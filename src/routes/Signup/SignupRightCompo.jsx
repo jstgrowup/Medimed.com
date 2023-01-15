@@ -40,7 +40,7 @@ function SignupRightCompo() {
     firstName: "",
     lastName: "",
     phnumber: "",
-    imageURL:`https://randomuser.me/api/portraits/men/${Math.floor(
+    imageURL: `https://randomuser.me/api/portraits/men/${Math.floor(
       Math.random() * 10
     )}.jpg`,
   });
@@ -66,6 +66,7 @@ function SignupRightCompo() {
     try {
       await axios.post(
         "https://frantic-foal-sweatpants.cyclic.app/auth/postUserViaForm",
+        // "http://localhost:8080/auth/postUserViaForm",
 
         formData
       );
@@ -78,6 +79,7 @@ function SignupRightCompo() {
       });
       navigate("/login");
     } catch (e) {
+      console.log("e:", e);
       if (!e.response.data._message) {
         toast({
           title: `${e.response.data.message}`,
